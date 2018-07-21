@@ -1,0 +1,13 @@
+p.a {
+    font-family: "Times New Roman", Times, serif;
+}
+
+.topcorner{
+   position:absolute;
+   top:0;
+   right:180px;
+  }
+  
+  img {
+    height: 186px;
+}
