@@ -39,10 +39,10 @@ export class GiftsCarouselComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     // this.mybanners.
     this.imgags = [
-      'assets/bg.jpg',
-      'assets/car.png',
-      'assets/canberra.jpg',
-      'assets/holi.jpg'
+      'assets/003.jpg',
+      'assets/005.jpg',
+      'assets/e9.jpg',
+      'assets/007.jpg'
     ];
 
     this.carouselBanner = {
@@ -142,59 +142,59 @@ export class GiftsCarouselComponent implements OnInit, AfterViewInit {
     this.states = [
       {
         name: 'atm',
-        img: 'assets/bg.jpg'
+        img: 'assets/005.jpg'
       },
       {
         name: 'atr',
-        img: 'assets/car.png'
+        img: 'assets/003.png'
       },
       {
         name: 'atm',
-        img: 'assets/canberra.jpg'
+        img: 'assets/e9.jpg'
       },
       {
         name: 'atr',
-        img: 'assets/holi.jpg'
+        img: 'assets/007.jpg'
       },
       {
         name: 'att',
-        img: 'assets/bg.jpg'
+        img: 'assets/005.jpg'
       },
       {
         name: 'atr',
-        img: 'assets/car.png'
+        img: 'assets/003.png'
       },
       {
         name: 'atm',
-        img: 'assets/canberra.jpg'
+        img: 'assets/e9.jpg'
       },
       {
         name: 'atr',
-        img: 'assets/holi.jpg'
+        img: 'assets/007.jpg'
       },
       {
         name: 'att',
-        img: 'assets/bg.jpg'
+        img: 'assets/005.jpg'
       },
       {
         name: 'atm',
-        img: 'assets/car.png'
+        img: 'assets/003.png'
       },
       {
         name: 'atm',
-        img: 'assets/canberra.jpg'
+        img: 'assets/e9.jpg'
       },
       {
         name: 'att',
-        img: 'assets/holi.jpg'
+        img: 'assets/007.jpg'
       },
       {
         name: 'atm',
-        img: 'assets/bg.jpg'
+        img: 'assets/005.jpg'
       },
       {
         name: 'atr',
-        img: 'assets/car.png'
+        img: 'assets/003.png'
       }
     ];
     this.stateCtrl = new FormControl();

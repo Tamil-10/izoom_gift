@@ -30,10 +30,20 @@
 					 <li *ngFor="let product of productList; let i = index" style="width: 249px; height: 356px;">
 						<div class="block2-pic hov-img0" style="width: 233px;height: 283px;">
 							<img [src]="imgdatapreffix+product.content_type+imgdatasuffix+product.content" style="height: 282px;" alt="IMG-PRODUCT">
-							<a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-					Add To Cart
-								<!-- <button type="button" (click)="addToCart(product)" class="hove" style="height: 40px;
-    width: 110px;">Add To Cart</button> -->
+					
+							<a class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+				 	 <label *ngIf="product.available_quantity<=10" class="control-label">{{product.available_quantity}}</label><br/>
+                    <label class="control-label">Quantity:</label>
+                    <select name="qty_{{product.id}}" id="qty_{{product.id}}">
+                      <option value="1">1</option>   
+                      <option value="2">2</option>   
+                      <option value="3">3</option>   
+                      <option value="4">4</option>   
+                      <option value="5">5</option>   
+                    </select><br/>
+                    <button type="button" (click)="addToCart(product)" class="hove" style="height: 40px;
+    width: 110px;">Add To Cart</button>
+							
 							</a>
 						</div>
 						<div class="block2-txt flex-w flex-t p-t-14">
