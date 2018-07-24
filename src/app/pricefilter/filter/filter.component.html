@@ -7,7 +7,7 @@
 				formControlName="priceMin">
 			<option value="0">any</option>
 			<option *ngFor="let _priceMin of _priceOptions" [value]="_priceMin.productPrice" >
-				{{ _priceMin.productPrice | currency:'USD':true:'1.0-2'}}
+			{{getCurrency()}} {{ _priceMin.productPrice}}
 			</option>
     </select>
 
@@ -17,7 +17,7 @@
 			formControlName="priceMax">
 			<option value="">any</option>
       <option *ngFor="let _priceMax of maxPriceOptions" [value]="_priceMax.productPrice" >
-					{{ _priceMax.productPrice | currency:'USD':true:'1.0-2'}}
+				{{getCurrency()}} {{ _priceMax.productPrice}}
 			</option>
     </select>
 

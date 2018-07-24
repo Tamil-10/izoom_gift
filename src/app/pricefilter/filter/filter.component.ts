@@ -42,19 +42,21 @@ export class FilterComponent {
       priceMax: this.priceMaxFilter || null
     });
   }
-
+    public getCurrency(): string {
+    return 'Rs.';
+  }
   // Data
   _priceOptions = [
+    { "productPrice": 100 },
+    { "productPrice": 200 },
+    { "productPrice": 300 },
+    { "productPrice": 400 },
     { "productPrice": 500 },
+    { "productPrice": 600 },
+    { "productPrice": 700 },
+    { "productPrice": 800 },
+    { "productPrice": 900 },
     { "productPrice": 1000 },
-    { "productPrice": 2000 },
-    { "productPrice": 3000 },
-    { "productPrice": 4000 },
-    { "productPrice": 5000 },
-    { "productPrice": 10000 },
-    { "productPrice": 20000 },
-    { "productPrice": 30000 },
-    { "productPrice": 40000 },
     { "productPrice": 50000 },
     { "productPrice": 60000 },
     { "productPrice": 70000 },

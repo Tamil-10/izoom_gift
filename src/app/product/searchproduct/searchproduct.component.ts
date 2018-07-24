@@ -24,6 +24,14 @@ export class SearchproductComponent implements OnInit {
   successMsg: string;
   filter: string;
   @Output() refreshShoppingCart = new EventEmitter();
+     @Input() priceMinFilter: number | null;
+  @Input() priceMaxFilter: number | null;
+
+  filterPrice(filter: IProductPriceLimit) {
+    this.priceMinFilter = filter.priceMin;
+    this.priceMaxFilter = filter.priceMax;
+  }
+
   constructor(private product: Product, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -76,3 +84,9 @@ export class SearchproductComponent implements OnInit {
   }
 
 }
+
+interface  IProduct {
+  name:string;
+  price:number;
+}
+
