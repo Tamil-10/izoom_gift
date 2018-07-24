@@ -23,6 +23,10 @@ import { OrdersummaryComponent } from './product/ordersummary/ordersummary.compo
 import { ProductService } from './service/product.service';
 import { GiftsComponent } from './gifts/gifts.component';
 import { GiftsCarouselComponent } from './giftscarousel/giftscarousel.component';
+import { PricefilterComponent } from './pricefilter/pricefilter.component';
+import { PriceFilterPipe } from './pricefilter/filter/filter.pipe';
+import { FilterComponent } from './pricefilter/filter/filter.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +40,10 @@ import { GiftsCarouselComponent } from './giftscarousel/giftscarousel.component'
     CartComponent,
     OrdersummaryComponent,
     GiftsComponent,
-    GiftsCarouselComponent
+    GiftsCarouselComponent,
+    PricefilterComponent,
+    PriceFilterPipe,
+    FilterComponent
 
   ],
   imports: [

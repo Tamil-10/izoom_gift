@@ -1,8 +1,5 @@
 <html>
 <head>
-<!-- 	<link rel="stylesheet" type="text/css" href="./../assets/product/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="./../assets/product/util.css">
-	<link rel="stylesheet" type="text/css" href="./../assets/product/main.css"> -->
 </head>
 <body>
 	
@@ -18,18 +15,14 @@
       </div>
     </div>
     
-
-    
-		
 			<div class="row isotope-grid">
-			
-				<!-- <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women"> -->
+
 					<!-- Block2 -->  
        
 					
-					 <li *ngFor="let product of productList; let i = index" style="width: 249px; height: 356px;">
-						<div class="block2-pic hov-img0" style="width: 233px;height: 283px;">
-							<img [src]="imgdatapreffix+product.content_type+imgdatasuffix+product.content" style="height: 282px;" alt="IMG-PRODUCT">
+					 <li *ngFor="let product of productList; let i = index" class="forlist">
+						<div class="block2-pic hov-img0" >
+							<img [src]="imgdatapreffix+product.content_type+imgdatasuffix+product.content"  class="forimage" alt="IMG-PRODUCT">
 					
 							<a class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 				 	<!--  <label *ngIf="product.available_quantity<=10" class="control-label">{{product.available_quantity}}</label><br/> -->
@@ -58,45 +51,7 @@
 							</div>
 						</div>
 						</li>
-					
-					
-	
-				
 			</div>
-		
-		
-	
-    
-    
-<!--     <div> 
-      <ul class="card-group row" id="cards-default">
-        <li class="column s4 redirectItem" *ngFor="let product of productList; let i = index">
-            <div class="card z-depth-1 hoverable">
-                <div class="card-image"><img alt="Birthday Gifts" class="img-responsive card-image-p redirectItem" [src]="imgdatapreffix+product.content_type+imgdatasuffix+product.content" data-url="/birthday-gifts">
-                   
-                </div>
-                <a>
-                  <div>
-                    <label class="control-label">{{product.name}}</label><br/>
-                    <label class="control-label">{{product.description}}</label><br/>
-                    <label class="control-label">{{getCurrency()}} {{product.price}}</label><br/>
-                    <label *ngIf="product.available_quantity<=10" class="control-label">{{product.available_quantity}}</label><br/>
-                    <label class="control-label">Quantity:</label>
-                    <select name="qty_{{product.id}}" id="qty_{{product.id}}">
-                      <option value="1">1</option>   
-                      <option value="2">2</option>   
-                      <option value="3">3</option>   
-                      <option value="4">4</option>   
-                      <option value="5">5</option>   
-                    </select><br>
-                    <button type="button" (click)="addToCart(product)">Add To Cart</button>
-                  </div>
-                </a>
-                <div class="hide int_titl"></div>
-            </div>
-        </li>
-</ul>
-   </div> -->
    
     <div class="row">
       <div class="form-group col-sm-9">
@@ -105,11 +60,6 @@
         <button type="button" (click)="proceedToOrderSummary()">Proceed To Order Summary</button>
       </div>
     </div>
-<!--   </div> -->
 
-
-<!-- 	<script src="./../assets/product/jquery-3.2.1.min.js"></script>
-	<script src="./../assets/product/animsition.min.js"></script>
-	<script src="./../assets/product/main.js"></script> -->
 </body>
 </html>

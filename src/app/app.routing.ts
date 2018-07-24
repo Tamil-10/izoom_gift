@@ -10,6 +10,7 @@ import { OrdersummaryComponent } from './product/ordersummary/ordersummary.compo
 import { PaymentgatwayComponent } from './payment/paymentgatway/paymentgatway.component';
 import { GiftsComponent } from './gifts/gifts.component';
 import { GiftsCarouselComponent } from './giftscarousel/giftscarousel.component';
+import { PricefilterComponent } from './pricefilter/pricefilter.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/productconfig', pathMatch: 'full' },
@@ -23,7 +24,9 @@ const appRoutes: Routes = [
   { path: 'ordersummary', component: OrdersummaryComponent },
   { path: 'paymentgatway', component: PaymentgatwayComponent },
   { path: 'gifts', component: GiftsComponent },
-  { path: 'giftscarousel', component: GiftsCarouselComponent }
+  { path: 'giftscarousel', component: GiftsCarouselComponent },
+  { path: 'pricefilter', component: PricefilterComponent }
+      
 
 
 
