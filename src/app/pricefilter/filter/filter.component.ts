@@ -47,9 +47,9 @@ export class FilterComponent {
   }
   // Data
   _priceOptions = [
-    { "productPrice": 100 },
-    { "productPrice": 200 },
-    { "productPrice": 300 },
+    { "productPrice": 0.00 - 50.00 },
+    { "productPrice": 50.00 - 100.00 },
+    { "productPrice": 100.00 - 150.00 },
     { "productPrice": 400 },
     { "productPrice": 500 },
     { "productPrice": 600 },
