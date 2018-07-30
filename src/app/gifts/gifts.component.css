@@ -11077,7 +11077,8 @@
         }
         
         body {
-            margin: 0
+            margin: 0;
+           
         }
         
         article,
@@ -11379,7 +11380,7 @@
         
         body {
             font-size: 12px;
-            overflow-y: auto
+           
         }
         
         body.no-scroll {
@@ -12013,7 +12014,7 @@
         
         .sec-header {
             height: 3em;
-            line-height: 3em;
+            
             overflow: hidden
         }
         

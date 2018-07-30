@@ -26,7 +26,10 @@ import { GiftsCarouselComponent } from './giftscarousel/giftscarousel.component'
 import { PricefilterComponent } from './pricefilter/pricefilter.component';
 import { PriceFilterPipe } from './pricefilter/filter/filter.pipe';
 import { FilterComponent } from './pricefilter/filter/filter.component';
-
+import { GenderfilterComponent } from './product/searchproduct/genderfilter/genderfilter.component';
+import { FilterByBrandPipe } from './product/searchproduct/genderfilter/filterByBrand.pipe';
+import { FilterByPricePipe } from './product/searchproduct/genderfilter/filterByPrice.pipe';
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +46,10 @@ import { FilterComponent } from './pricefilter/filter/filter.component';
     GiftsCarouselComponent,
     PricefilterComponent,
     PriceFilterPipe,
-    FilterComponent
+    FilterByBrandPipe,
+    FilterByPricePipe,
+    FilterComponent,
+    GenderfilterComponent
 
   ],
   imports: [

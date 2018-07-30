@@ -23,3 +23,4 @@ export class PriceFilterPipe implements PipeTransform {
   }
 
 }
+

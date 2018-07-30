@@ -22,7 +22,9 @@ export class FilterComponent {
 
   // Outputs
   @Output() filterPrice: EventEmitter<IProductPriceLimit> = new EventEmitter<IProductPriceLimit>();
-
+    
+     amounts = ["Below 100", "100 - 200", "200 - 300", "300 - 1000" ];
+  selectedPrice: "Below 500";
   // Constructor
   constructor() {
     this.priceFilterForm = new FormGroup({
@@ -47,9 +49,9 @@ export class FilterComponent {
   }
   // Data
   _priceOptions = [
-    { "productPrice": 0.00 - 50.00 },
-    { "productPrice": 50.00 - 100.00 },
-    { "productPrice": 100.00 - 150.00 },
+    { "productPrice": 100 },
+    { "productPrice": 200 },
+    { "productPrice": 300 },
     { "productPrice": 400 },
     { "productPrice": 500 },
     { "productPrice": 600 },

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-declare let $: any;
-declare let jquery:any;
 
 
 @Component({
@@ -11,6 +9,7 @@ declare let jquery:any;
 })
 export class GiftsComponent implements OnInit {
 
+        
   constructor() { }
 
   ngOnInit() {

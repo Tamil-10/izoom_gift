@@ -1,14 +1,65 @@
 
-/* .form-control::-webkit-inner-spin-button, .no-spin::-webkit-outer-spin-button {
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #fff;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    #fff;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #fff;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #fff;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color:    #fff;
+}
+
+::placeholder { /* Most modern browsers support this now. */
+   color:    #fff;
+}
+::placeholder[type=number]:focus { /* Most modern browsers support this now. */
+   color:    black;
+}
+.formcontrol::-webkit-inner-spin-button, .no-spin::-webkit-outer-spin-button {
     -webkit-appearance: none !important;
     margin: 0 !important;
     -moz-appearance:textfield !important;
-} */
+}
+.formcontrol{
+	font-size:13px;
+	height:35px;
+	color:#fff;
+	width:70px;
+	background:transparent;
+}
+.control{
+	font-size:13px;
+	height:32px;
+	padding-top: 0px;
+	
+	color:#fff;
+	width:110px;
+	background:transparent;
+}
+button{
+	
+}
+input[type=number]:focus {
+ border: 2px solid green; 
+ background-color:#fff;
+ color:black;
+}
 .title {
     text-align: center;
 }
 .price-filter-form {
     text-align: center;
+    margin-top: 0px;
+    height: -webkit-fill-available;
 }
 .price-list {
     max-width: 500px;
@@ -42,4 +93,7 @@
     text-align: center;
     background: #ffffd2;
     border: 1px solid #ffef25;
+}
+.form-group{
+	    margin-bottom: .5em;
 }

@@ -7,15 +7,21 @@ import { Product } from '../../model/product';
 import { ProductInst } from '../../model/product_inst';
 import { ProductService } from '../../service/product.service';
 import { SearchCriteria } from '../../model/searchcriteria';
-import { CartComponent } from '../cart/cart.component'
+import { CartComponent } from '../cart/cart.component';
+declare var jquery:any;
+declare var $ :any;
+
 @Component({
   selector: 'app-searchproduct',
   templateUrl: './searchproduct.component.html',
   styleUrls: ['./searchproduct.component.css'],
-  providers: [Product, SearchCriteria, ProductInst, CartComponent]
+  providers: [Product, SearchCriteria, ProductInst, CartComponent],
+
 })
 export class SearchproductComponent implements OnInit {
-
+    /* public get maxPriceOptions(): any[] { 
+    return this.priceMinFilter ?  this._priceOptions.filter(p => p.productPrice > this.priceMinFilter) : this._priceOptions;
+  } */
   productList: Array<Product>;
   imgdatapreffix = "data:";
   imgdatasuffix = ";base64,";
@@ -23,15 +29,23 @@ export class SearchproductComponent implements OnInit {
   userName: string;
   successMsg: string;
   filter: string;
+    
+    //for price filter
   @Output() refreshShoppingCart = new EventEmitter();
-     @Input() priceMinFilter: number | null;
+  @Input() priceMinFilter: number | null;
   @Input() priceMaxFilter: number | null;
 
   filterPrice(filter: IProductPriceLimit) {
     this.priceMinFilter = filter.priceMin;
     this.priceMaxFilter = filter.priceMax;
   }
-
+    //for gender filter
+  brands = ["All", "yte", "dfgfd", "fgfs"];
+  selectedBrand: "All";
+   
+  amounts = ["Below 100", "100 - 200", "200 - 300", "300 - 1000" ];
+  selectedPrice: "Below 100";
+  
   constructor(private product: Product, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -41,7 +55,7 @@ export class SearchproductComponent implements OnInit {
     this.userName = 'pandian'
     this.retrieveAllProducts();
   }
-
+    
   public getCurrency(): string {
     return 'Rs.';
   }
@@ -82,8 +96,11 @@ export class SearchproductComponent implements OnInit {
   proceedToOrderSummary() {
     this.router.navigateByUrl('ordersummary')
   }
-
+   
 }
+
+
+
 
 interface  IProduct {
   name:string;

@@ -6,7 +6,9 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./pricefilter.component.css']
 })
 export class PricefilterComponent implements OnInit {
-
+    
+    
+  
   constructor() { }
 
   ngOnInit() {

@@ -7,6 +7,7 @@ import {ProductService} from '../../service/product.service';
   templateUrl: './productconfig.component.html',
   styleUrls: ['./productconfig.component.css'],
   providers:[Product,ProductService]
+  
 })
 export class ProductconfigComponent implements OnInit,OnDestroy {
 
