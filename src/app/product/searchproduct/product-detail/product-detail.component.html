@@ -1,0 +1,48 @@
+
+
+<hr/>
+
+<div class="container">				
+  <div class="row">
+    
+        <div class="col-sm-5 single-top">
+        <div class="view hm-zoom z-depth-2" style="cursor: pointer">
+            <img [src]="imgdatapreffix+product.content_type+imgdatasuffix+product.content" [alt]="productName" width="100%" class="img-fluid rounded">
+          </div>
+       </div>
+
+       <div class="col-sm-6">
+         <div class="single-para">
+          <div *ngFor = "let product of productList">
+           <div *ngIf = "product.id == this.productId">
+           
+            <h4 class="product-head">{{product.name}}</h4>
+       						
+           <h5 class="item_price">Rs.{{product.price}}</h5>							
+           <p class="para">{{product.description}} </p>
+          
+           <div class="check">
+            <p><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>No. of quantity available : {{product.available_quantity}}</p>
+            <div id='myform'>
+                <input type='button' value='-' (click)="decrement(product)"  class='qtyminus'>
+                <!-- name="qty_{{product.id}}" id="qty_{{product.id}}" -->
+                <input  type="text"  class="qty" value="{{counter}}" readonly >
+                    <input type='button' value='+' (click)="increment(product)" class='qtyplus'>
+                    
+                  </div>
+             </div>
+             <br>
+             <button class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
+           			
+        
+          
+      <div class="clearfix"> </div>
+      </div>
+      </div>
+    </div>
+    </div>
+  
+    </div>
+  </div>
+  <hr/>
+  <hr/>

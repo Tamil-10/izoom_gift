@@ -94,18 +94,18 @@
    
     <div class="site-wrapper" id="site-wrapper">
        <!-- <app-giftscarousel></app-giftscarousel> -->
-        <!-- <div class="banner-wrapper image-banner" data-bnr="[{&quot;id&quot;:17,&quot;group&quot;:&quot;home&quot;,&quot;slot&quot;:1,&quot;hover&quot;:&quot;Father&#x27;s Day Gifts&quot;,&quot;image&quot;:&quot;welcome_to_igp.jpg&quot;,&quot;event&quot;:&quot;Welcome&quot;,&quot;url&quot;:&quot;&quot;}]">
-            <div class="home-banner-carousel row no-margin">
-                <div>
-                    <div class="banner-overlay"></div><img class="img-responsive banner-image" alt="Banner Image" src="http://backgroundcheckall.com/wp-content/uploads/2017/12/12x36-background-10.jpg"></div>
-            </div>
-        </div> -->
+       
+                <div class="box" [@scrollAnimation]="state">
+                  <img  class="img-responsive banner-image" alt="Banner Image" src="https://style.giftcart.com/pub/media/wysiwyg/home/Main/special_offer.jpg">
+                  </div>
+           
+          
         <div class="relative">
             <div class="selection-panel-wrapper bg-dark-new">
                 <div id="selection-panel">
                     <ul id="selection-panel-list">
                         <li class="selection-panel-item clos clk" data-selectioncode="gs" id="gs">
-                           <a href="">
+                           <a style ="outline: none;" mat-raised-button  [routerLink]="['/category']">
                             <div class="selection-icon waves-effect waves-light">
                                 
                                    <div class="s-icon s-panel-icon" style="height: 90px;" >
@@ -131,11 +131,11 @@
                                
                            
                             </div>
-                             <p class="filter">Bride</p>
+                             <p class="filter">Birthday Gifts</p>
                              </a>
                         </li>
                         <li class="selection-panel-item clos clk" data-selectioncode="gs" id="gs">
-                             <a href="">
+                             <a style ="outline: none;" mat-raised-button [routerLink]="['/weddinggifts']">
                             <div class="selection-icon waves-effect waves-light">
                                 
                                    <div class="s-icon s-panel-icon" style="height: 90px;" >
@@ -175,11 +175,11 @@
                           
                             
                             </div>
-                                  <p class="filter">Groom</p>
+                                  <p class="filter">Wedding Gifts</p>
                                   </a>
                         </li>
                         <li class="selection-panel-item clos clk" data-selectioncode="gs" id="gs">
-                              <a href="">
+                             <a style ="outline: none;" mat-raised-button [routerLink]="['/category']">
                             <div class="selection-icon waves-effect waves-light">
                                 
                                    <div class="s-icon s-panel-icon" style="height: 90px;" >
@@ -217,11 +217,11 @@
                                 </div>
                            
                             </div>
-                                 <p class="filter">Couple</p>
+                                 <p class="filter">Anniversary Gifts</p>
                                  </a>
                         </li>
                         <li class="selection-panel-item clos clk" data-selectioncode="gs" id="gs">
-                          <a href="">
+                       <a style ="outline: none;" mat-raised-button [routerLink]="['/category']">
                             <div class="selection-icon waves-effect waves-light">
                                 
                                    <div class="s-icon s-panel-icon" style="height: 90px;" >
@@ -260,7 +260,7 @@
                               </a>
                         </li>
                         <li class="selection-panel-item clos clk" data-selectioncode="gs" id="gs">
-                         <a href="">
+                        <a style ="outline: none;" mat-raised-button [routerLink]="['/category']">
                             <div class="selection-icon waves-effect waves-light">
                                 
                                    <div class="s-icon s-panel-icon" style="height: 90px;" >
@@ -285,7 +285,36 @@
                                 </div>
                              
                             </div>
-                               <p class="filter">Handmade</p>
+                               <p class="filter">Personalized Gifts</p>
+                       </a>
+                        </li>
+                        <li class="selection-panel-item clos clk" data-selectioncode="gs" id="gs">
+                       <a style ="outline: none;" mat-raised-button [routerLink]="['/category']">
+                            <div class="selection-icon waves-effect waves-light">
+                                
+                                   <div class="s-icon s-panel-icon" style="height: 90px;" >
+        <svg enable-background='new 0 0 213 46' height='100%' id='Layer_1' space='preserve' version='1.1' viewbox='0 0 213 46' width='100%' x='0px' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg' y='0px'>
+          <g>
+          	<path d="M24,74.2l1.28-6.12a9.49,9.49,0,0,1,1.54-3.52c.94-1.32,2.25-3.18,3.07-4.39a46.38,46.38,0,0,0,3.46-6.92,9.06,9.06,0,0,1,.62-1c1.7-2.61,5.86-8.12,4.71-9.87-.81-1.24-4.08,1.86-6.54,4.52-1.62,1.75-2.9,3.31-2.9,3.31l-.09-5.42L30.7,42.5,36,34.62c2-3.09-.75-2.06-.75-2.06l-6.06,5.52L27.08,40l-4.44,4.27a3.69,3.69,0,0,0-1.12,3.09c.09,2.15-1.6,11-2,12.53s-6.42,12.67-6.42,12.67" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round"></path>
+	<line x1="46.32" y1="51.15" x2="44.09" y2="33.51" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round"></line>
+	<polyline points="34.63 54.04 35.2 56.29 45.85 53.72" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round"></polyline>
+	<polyline points="28.69 36.63 23.59 18.14 51.11 10.6 61.4 49.96 47.61 53.29" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round"></polyline>
+	<path d="M73.91,71l-5.29-3.93L54.5,55.27l-2.13-.56a4.62,4.62,0,0,0-3.9,2.42" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round"></path>
+	<path d="M47.69,64.42c-3.51-2.39-7.36-5.06-6.47-6.73l5.61,1.81" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round"></path>
+	<path d="M49.64,65.76l.13.09h0c.46.33.88.64,1.26.94h0a12.15,12.15,0,0,1,1.12,1v0c.09.08.16.16.23.23a3.4,3.4,0,0,1,.33.46c1.3,2.42,8,3.44,8,3.44l3.71,2.6" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round"></path>
+	<line x1="53.02" y1="61.5" x2="49.05" y2="60.22" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round"></line>
+	<path d="M43.45,62.33l.06,1.21a8.88,8.88,0,0,0,1.89,5.11c.22.28.4.46.47.46.27,0,2.22.65,2.13-1.86l-1.48-3.43" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round"></path>
+	<polyline points="47.79 65.78 47.44 65.77 48 67.25 49.02 67.96 49.49 68.28 51.58 68.08 52.41 68 52.46 68 52.18 67.77 52.17 67.75 51.08 66.82 51.04 66.79 49.95 65.86 49.79 65.85 49.77 65.85 49.64 65.85" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round"></polyline>
+	<path d="M49,67.9s.1,2.7.84,3.16l2,1.49S53.67,72.92,53,70L51.44,67.9" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round"></path>
+	<path d="M48.37,58.24,47.26,51l-1.77.18,1,7.34a30.31,30.31,0,0,1,1.3,8.08l1.85-.27C49.3,58.8,48.37,58.24,48.37,58.24Z" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round"></path>
+	<line x1="31.72" y1="45.51" x2="31.25" y2="44.12" style="fill:none;stroke:#fff;stroke-linecap:round;stroke-linejoin:round"></line>
+            
+          </g>
+        </svg>
+                                </div>
+                             
+                            </div>
+                               <p class="filter">Special Gifts</p>
                        </a>
                         </li>
                     </ul>
@@ -297,6 +326,7 @@
             
             </div>
         </div>
+        <app-searchproduct></app-searchproduct>
        
   
   <!-- 

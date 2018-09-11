@@ -11,13 +11,14 @@
                 <th width="50%">Description</th>
                 <th width="20%">Remove</th>
               </tr>
-              <tr *ngFor="let product of productList">
+              <tr *ngFor="let product of productList | paginate: { itemsPerPage: 10, currentPage: p }">
                 <td> <a routerLink="/productconfig" [queryParams]="{ product: product.id }"> {{product.id}}</a></td>
                 <td>{{product.name}}</td>
                 <td>{{product.description}}</td>
                 <td> <button type="button" (click)="remove(product)"> Remove</button></td>
               </tr>
             </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
           </div>
         </div>
       </div>

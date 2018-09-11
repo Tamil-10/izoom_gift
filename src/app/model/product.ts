@@ -2,6 +2,7 @@ export class Product{
     id:number;
     name:string;
     type:string;
+    gender_type:string;
     description:string;
     available_quantity:number;
     price:number;

@@ -6,6 +6,7 @@ import { ProductService } from '../../service/product.service';
 import { HttpResponse, HttpRequest, HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import "ag-grid-enterprise";
+import { ItemsControl } from '../../giftscarousel/carousel/ngu-carousel/ngu-carousel';
 @Component({
   selector: 'app-manageproductconfig',
   templateUrl: './manageproductconfig.component.html',
@@ -16,7 +17,7 @@ export class ManageproductconfigComponent implements OnInit {
   private errorMsg: string;
   private successMsg: string;
   private productList: Array<Product> = [];
-
+proId:any=63;
   constructor(private http: HttpClient, private searchCriteria: SearchCriteria, private product: Product, private productService: ProductService) {
     searchCriteria.start = 0;
     searchCriteria.limit = 10;
@@ -32,11 +33,15 @@ export class ManageproductconfigComponent implements OnInit {
   retrieveProductList() {
     this.productService.retrieveProductList(this.searchCriteria).subscribe(data => {
       console.log(data);
+      console.log(data);
       if (data instanceof HttpResponse ) {
         console.log(data.body);
         this.productList = JSON.parse('' + data.body);
+        console.log('dsf------'+this.productList.find((item) => item.id === this.proId));
+        
       }
     });
+     
   }
 
 

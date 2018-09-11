@@ -11,10 +11,14 @@ import { PaymentgatwayComponent } from './payment/paymentgatway/paymentgatway.co
 import { GiftsComponent } from './gifts/gifts.component';
 import { GiftsCarouselComponent } from './giftscarousel/giftscarousel.component';
 import { PricefilterComponent } from './pricefilter/pricefilter.component';
+import { CategoryComponent } from './product/searchproduct/category/category.component';
+import { WeddinggiftsComponent } from './product/searchproduct/weddinggifts/weddinggifts.component';
+import { ProductDetailComponent } from './product/searchproduct/product-detail/product-detail.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/productconfig', pathMatch: 'full' },
   { path: 'productconfig', component: ProductconfigComponent },
+  { path: 'ProductDetailComponent/:id',component: ProductDetailComponent },
   { path: 'manageproductconfig', component: ManageproductconfigComponent },
   { path: 'searchproduct', component: SearchproductComponent },
   { path: 'pollconfigcreate', component: PollconfigComponent },
@@ -25,7 +29,10 @@ const appRoutes: Routes = [
   { path: 'paymentgatway', component: PaymentgatwayComponent },
   { path: 'gifts', component: GiftsComponent },
   { path: 'giftscarousel', component: GiftsCarouselComponent },
-  { path: 'pricefilter', component: PricefilterComponent }
+  { path: 'pricefilter', component: PricefilterComponent },
+  { path: 'category', component: CategoryComponent },
+  { path: 'weddinggifts', component: WeddinggiftsComponent }
+
       
 
 

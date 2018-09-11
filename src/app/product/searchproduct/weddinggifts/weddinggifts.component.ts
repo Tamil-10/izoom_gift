@@ -3,27 +3,22 @@ import { HttpResponse } from '@angular/common/http';
 import { Observable } from "rxjs/Observable";
 import { Observer } from "rxjs/Observer";
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { Product } from '../../model/product';
-import { ProductInst } from '../../model/product_inst';
-import { ProductService } from '../../service/product.service';
-import { SearchCriteria } from '../../model/searchcriteria';
-import { CartComponent } from '../cart/cart.component';
-import { FiltersComponent } from '../../product/searchproduct/filters/filters.component';
-import { combineAll } from 'rxjs/operators';
-declare var jquery:any;
-declare var $ :any;
+import { Product } from '../../../model/product';
+import { ProductInst } from '../../../model/product_inst';
+import { ProductService } from '../../../service/product.service';
+import { SearchCriteria } from '../../../model/searchcriteria';
+import { CartComponent } from '../../cart/cart.component';
+import { FiltersComponent } from '../../../product/searchproduct/filters/filters.component';
+
 
 @Component({
-  selector: 'app-searchproduct',
-  templateUrl: './searchproduct.component.html',
-  styleUrls: ['./searchproduct.component.css'],
+  selector: 'app-weddinggifts',
+  templateUrl: './weddinggifts.component.html',
+  styleUrls: ['./weddinggifts.component.css'],
   providers: [Product, SearchCriteria, ProductInst, CartComponent]
-
 })
-export class SearchproductComponent implements OnInit {
-    /* public get maxPriceOptions(): any[] { 
-    return this.priceMinFilter ?  this._priceOptions.filter(p => p.productPrice > this.priceMinFilter) : this._priceOptions;
-  } */
+export class WeddinggiftsComponent implements OnInit {
+
   productList: Array<Product>;
   imgdatapreffix = "data:";
   imgdatasuffix = ";base64,";
@@ -31,10 +26,12 @@ export class SearchproductComponent implements OnInit {
   userName: string;
   successMsg: string;
   filter: string;
+  productType: number;
   public counter : number = 1;   
   public Count : number;
 
-    
+  
+  
     //for price filter
   @Output() refreshShoppingCart = new EventEmitter();
   @Input() priceMinFilter: number | null;
@@ -44,27 +41,7 @@ export class SearchproductComponent implements OnInit {
     this.priceMinFilter = filter.priceMin;
     this.priceMaxFilter = filter.priceMax;
   }
-    //for gender filter
-  /*brands = ["All", "yte", "dfgfd", "fgfs"];
-  selectedBrand: "All";
-   
-  amounts = ["Below 100", "100 - 200", "200 - 300", "300 - 1000" ];
-  selectedPrice: "Below 100"; */
-  
-  //products: Product[];
- // mainFilter: any;
-  
-  //@ViewChild('filtersComponent')
-  //filtersComponent: FiltersComponent;
 
-
-  /* priceFilters: any[] = [
-    { name:'All', value:'all', checked:true },
-    { name:'Price > 30.000', value:'more_30000', checked:false },
-    { name:'Price < 10.000', value:'less_10000', checked:false }
-  ]
-  originalData: any = [];*/
-  
   constructor(private product: Product, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent, private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -73,25 +50,34 @@ export class SearchproductComponent implements OnInit {
     this.userId = 1;
     this.userName = 'pandian'
     this.retrieveAllProducts();
-    
-  }
-  increment(product){this.counter += 1;}
-  decrement(product){if(this.counter >1){this.counter -= 1;}}
-  public getCurrency(): string {  
-    return 'Rs.';
+  
   }
 
   retrieveAllProducts() {
     this.productService.retrieveProductList(this.searchCriteria).subscribe(data => {
+      
       if (data instanceof HttpResponse ) {
-        console.log('sdf---'+data.body);
         this.productList = JSON.parse('' + data.body);
       }
     });
-    
-    
   }
+  increment(product){this.counter += 1;}
+    decrement(product){if(this.counter >1){this.counter -= 1;}}
+  public getCurrency(): string {  
+    return 'Rs.';
+  }
+  // forproduct(){
+  //   this.productt = this.product.type.split(',');
+  //   for(var i=0; i < this.productt.length;i++){
+  //     if(this.productt[i] = '2')
+  //     return true;
+  //     else 
+  //     return false;
+  //     break;
+  //     console.log(this.productt[i]);
 
+  //   }
+  // }
   addToCart(product) {
     let qty = (<HTMLInputElement>document.getElementById("qty_" + product.id)).value;
     let productInst = new ProductInst();
@@ -113,23 +99,16 @@ export class SearchproductComponent implements OnInit {
           this.successMsg = undefined;
         }, 3000);
       }
-
+      this.counter = 1;
     });
-    this.counter = 1;
-
+    
   }
-  
   proceedToOrderSummary() {
     this.router.navigateByUrl('ordersummary')
   }
-   
 }
-
-
-
 
 interface  IProduct {
   name:string;
   price:number;
 }
-

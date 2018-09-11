@@ -1,4 +1,9 @@
-   		  .ie-mask-layer {
+    
+         .mat-raised-button{
+            line-height: 22px;
+            padding: 0px 0px;          
+          }
+        .ie-mask-layer {
             display: none;
         }
         @font-face {
@@ -2322,6 +2327,7 @@
         a {
             background-color: transparent;
             color: #039be5
+            
         }
         
         a:active,
@@ -14797,7 +14803,7 @@
             float: left;
             color: #fff;
             border-left: 1px solid #fff;
-            width: 20%;
+            width: 16.66%;
             height: 100%
         }
         
@@ -14816,7 +14822,7 @@
         
         .selection-icon {
             padding: 1em 0;
-            width: 32%;
+            width: 35%;
             height: 80%
         }
         

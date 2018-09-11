@@ -1,165 +1,5 @@
-<html>
-<head>
-<style>
-</style>
-</head>
-<body>
-	 
 
-    <div class="header-container">
-        
-        <div class="row no-margin bg-dark-red sec-header">
-            <div class="col s12 text-right">
-                <ul>
-                    <li class="sec-menu-item"><app-filter  (filterPrice)='filterPrice($event)'></app-filter></li>
-                    <li class="sec-menu-item"><a>
-  
-  <!--   <div class="form-group">
-      <label for="brand_select">By Price:</label>
-      <select class="form-control" name="" id="brand_select" [(ngModel)]="selectedBrand">
-        <option *ngFor="let brand of brands" [ngValue]="brand">{{brand}}</option>
-         <option value="Min" class="OMc8Rd">Under ₹1,000</option>
-            <option value="200" class="OMc8Rd">₹1,000 - ₹5,000</option>
-            <option value="400" class="OMc8Rd">₹5,000 - ₹10,000</option>
-            <option value="700" class="OMc8Rd">₹10,000 - ₹20,000</option>
-            
-      </select>
-    </div> -->
-    
-   </a></li>
-                    <li class="sec-menu-item"><a>
-                    <div class="form-group">
-      <label for="brand_select">Occasion</label>
-      <select class="form-control" name="" >
-       <!--  <option *ngFor="let brand of brands" [ngValue]="brand">{{brand}}</option> -->
-         <option value="Min" class="OMc8Rd">Birthday Gifts</option>
-            <option value="200" class="OMc8Rd">Anniversary Gifts</option>
-            <option value="400" class="OMc8Rd">Same Day Delivery Gifts</option>
-            <option value="700" class="OMc8Rd">Friendship Day Gifts</option>
-      </select>
-    </div>
-    </a></li>
-              		<li class="sec-menu-item"><a>Preferred delivery</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <app-giftscarousel></app-giftscarousel>
-    <app-gifts></app-gifts>
-    <!-- Title -->
-<!-- <h2 class="title">Price Filter Pipe with Data Driven Form Approach</h2> -->
 
-<!-- Filter -->
-<!-- <app-filter (filterPrice)='filterPrice($event)' ></app-filter> -->
-
-<!-- Notification -->
-<!-- <div class="note" *ngIf="priceMinFilter || priceMaxFilter">
-	<span *ngIf="priceMinFilter">Filtering Products from <strong>{{getCurrency()}} {{ priceMinFilter }}</strong></span>
-	<span *ngIf="priceMaxFilter"> to <strong>{{getCurrency()}} {{ priceMaxFilter }}</strong></span>
-</div> -->
-
-<!--Product List -->
-<!-- <div class="price-list">
-	<div class="product-item" *ngFor="let _product of (_productList | priceFilter:priceMinFilter:priceMaxFilter)">
-		<span class="name">{{ _product.name }}</span><span class="price">{{ _product.price | currency:'USD':true:'1.0-2' }}</span>
-	</div>
-</div>  --> 
-
- <div class="row">
-  <div class="col-md-3">
-    <div class="form-group">
-      <label for="brand_select">By Brands:</label>
-      <select class="form-control" name="" id="brand_select" [(ngModel)]="selectedBrand">
-        <option *ngFor="let brand of brands" [ngValue]="brand">{{brand}}</option>
-      </select>
-      
-    </div>
-    </div>
-    </div> 
-    
-     <div class="form-group">
-      <label for="brand_select">By Price:</label>
-      <select class="form-control" name="selectedPrice" id="brand_select" [(ngModel)]="selectedPrice">
-      <option [ngValue]="undefined" disabled  selected>Select...</option>
-        <option *ngFor="let amount of amounts" [ngValue]="amount">{{amount}}</option>
-         <!-- <option value="Min" class="OMc8Rd">Under ₹1,000</option>
-            <option value="200" class="OMc8Rd">₹1,000 - ₹5,000</option>
-            <option value="400" class="OMc8Rd">₹5,000 - ₹10,000</option>
-            <option value="700" class="OMc8Rd">₹10,000 - ₹20,000</option> -->
-            
-      </select>
-    </div>
-    
- <!--  <div class="row">
-  <div class="col-md-3">
-  <div class="form-group">
-        <select class="fPjUPw">
-            <option value="Min" class="OMc8Rd">Min</option>
-            <option value="200" class="OMc8Rd">₹200</option>
-            <option value="400" class="OMc8Rd">₹400</option>
-            <option value="700" class="OMc8Rd">₹700</option>
-            <option value="1000" class="OMc8Rd">₹1000</option>
-        </select>
-    </div>
-    <div class="_2LchWD">to</div>
-    <div class="_1YoBfV">
-        <select class="fPjUPw">
-            <option value="200" class="OMc8Rd">₹200</option>
-            <option value="400" class="OMc8Rd">₹400</option>
-            <option value="700" class="OMc8Rd">₹700</option>
-            <option value="1000" class="OMc8Rd">₹1000</option>
-            <option value="Max" class="OMc8Rd">₹1000+</option>
-        </select>
-    </div>
-</div>
-</div> -->
-    	
-    <!-- <div>  
-      <p>
-      0
-      <input type="range" min="0" max="100" 
-          [value]="sliderValue" 
-          (input)="sliderValue = $event.target.value" />
-      100
-      </p>
-      <span>{{ sliderValue }}</span>
-      
-      <p>
-  0
-    <input type="range" min="0" max="100" 
-          [(ngModel)]="anotherSliderValue" />
-  100
-  </p>
-  <span>{{anotherSliderValue }}</span>
-    </div>  -->
-    
-    	<!-- <div>
-		Price From Select
-		<label for="price-min">Min Price</label>
-		<select id="price-min" class="form-control" name="pricemin" [(ngModel)]="priceMinFilter" 
-				formControlName="priceMin">
-			<option value="0">any</option>
-			<option *ngFor="let _priceMin of _priceOptions" [value]="_priceMin.productPrice" >
-			{{getCurrency()}} {{ _priceMin.productPrice}}
-			</option>
-    </select>
-		
-		Price To Select
-		<label for="price-max">Max Price</label>
-		<select id="price-max" class="form-control" name="pricemax" [(ngModel)]="priceMaxFilter" 
-			formControlName="priceMax">
-			<option value="">any</option>
-      <option *ngFor="let _priceMax of maxPriceOptions" [value]="_priceMax.productPrice" >
-				{{getCurrency()}} {{ _priceMax.productPrice}}
-			</option>
-    </select>
-	<button type="submit" class="control" (click)="onSubmit()">Filter by Price!</button>
-		 
-	</div> -->
-    <!--   <div class="well"> -->
-    
-   
-    
     <div class="row">
       <div class="form-group col-sm-12">
         <div id="errorDiv" class="form-group" style="background-color: #0d5d17;text-align:center">
@@ -169,34 +9,43 @@
         </div>
       </div>
     </div>
+    
     <div class="container">
 			<div class="row isotope-grid">
 
 					<!-- Block2 -->  
-       
+         
+            
 					
-					 <li *ngFor="let product of (productList | priceFilter:priceMinFilter:priceMaxFilter | filterByBrand: selectedBrand | filterByPrice: selectedPrice) let i = index" class="forlist">
-						<div class="block2-pic hov-img0" >
+					 <li  *ngFor="let product of (productList | priceFilter:priceMinFilter:priceMaxFilter | paginate: { itemsPerPage: 10, currentPage: p }) let i = index" class="forlist">
+            <div>
+            <div class="block2-pic hov-img0" >
 							<img [src]="imgdatapreffix+product.content_type+imgdatasuffix+product.content"  class="forimage" alt="IMG-PRODUCT">
 					
-							<a class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+							<a  class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
 				 	<!--  <label *ngIf="product.available_quantity<=10" class="control-label">{{product.available_quantity}}</label><br/> -->
-                    <label class="control-label">Quantity:</label>
+                    <!-- <label class="control-label">Quantity:</label>
                     <select name="qty_{{product.id}}" id="qty_{{product.id}}">
                       <option value="1">1</option>   
                       <option value="2">2</option>   
                       <option value="3">3</option>   
                       <option value="4">4</option>   
                       <option value="5">5</option>   
-                    </select><br/>
-                    <button type="button" (click)="addToCart(product)" style="height: 40px;
+                    </select><br/> -->
+                    <div id='myform'>
+                      <input type='button' value='-' (click)="decrement(product)"  class='qtyminus'>
+                          <input name="qty_{{product.id}}" id="qty_{{product.id}}" type="text"  class="qty" value="{{counter}}" readonly >
+                          <input type='button' value='+' (click)="increment(product)" class='qtyplus'>
+                          
+                        </div>
+                    <button type="button" id="startBtn" (click)="addToCart(product)" style="height: 40px;
     width: 110px;" >Add To Cart</button>
 						
 							</a>
 						</div>
 						<div class="block2-txt flex-w flex-t p-t-14">
 							<div class="block2-txt-child1 flex-col-l ">
-								<a href="#" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+								<a [routerLink]="['/ProductDetailComponent', product.id]"  class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
 								{{product.name}}
 								<br>
 								<span class="stext-105 cl3">
@@ -204,12 +53,15 @@
 								</span>
 								</a>
 							</div>
-						</div>
+            </div>
+            </div>
 						</li>
-			</div>
+      </div>
+     
+			 <pagination-controls class="pagination-controls" (pageChange)="p = $event"></pagination-controls>
 			</div>
    
-   
+  
     <div class="row">
       <div class="form-group col-sm-9">
       </div>
@@ -218,6 +70,3 @@
       </div>
     </div>
 
-	
-</body>
-</html>

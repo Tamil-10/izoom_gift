@@ -1,29 +1,41 @@
 
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #fff;
+    color:    #636363;
+    text-align: center; 
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color:    #fff;
+   color:    #636363;
+   text-align: center; 
    opacity:  1;
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-   color:    #fff;
+   color:    #636363;
+   text-align: center; 
    opacity:  1;
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-   color:    #fff;
+   color:   #636363;
+   text-align: center; 
 }
 ::-ms-input-placeholder { /* Microsoft Edge */
-   color:    #fff;
+   color:  #636363;
+   text-align: center; 
 }
 
 ::placeholder { /* Most modern browsers support this now. */
-   color:    #fff;
+   color:  #636363 ;
+   text-align: center; 
 }
 ::placeholder[type=number]:focus { /* Most modern browsers support this now. */
    color:    black;
+   text-align: center; 
 }
+:focus::-webkit-input-placeholder { opacity: 0; } /* Chrome <=56, Safari < 10 */
+*:focus:-moz-placeholder { opacity: 0; } /* FF 4-18 */
+*:focus::-moz-placeholder { opacity: 0; } /* FF 19-50 */
+*:focus:-ms-input-placeholder { opacity: 0; } /* IE 10+ */
+*:focus::placeholder { opacity: 0; } /* Modern Browsers */
 .formcontrol::-webkit-inner-spin-button, .no-spin::-webkit-outer-spin-button {
     -webkit-appearance: none !important;
     margin: 0 !important;
@@ -32,9 +44,21 @@
 .formcontrol{
 	font-size:13px;
 	height:35px;
-	color:#fff;
-	width:70px;
+	color:#020202;
+	width:55px;
+	font-family: cursive;
 	background:transparent;
+	text-align: -webkit-center;
+}
+.form-control{
+margin-top: 10px;
+border: 2px solid #bfbbbb;
+padding: 6px;
+background-color: #efefef;
+}
+.form-control:active{
+    
+    background-color: #d6d0d0;
 }
 .control{
 	font-size:13px;
@@ -45,13 +69,18 @@
 	width:110px;
 	background:transparent;
 }
-button{
-	
+
+input[type=number]{
+    border: 2px solid #bfbbbb;
+    border-radius: 5px;
+    height: 30px;
+    background-color:#fff;
 }
 input[type=number]:focus {
- border: 2px solid green; 
- background-color:#fff;
- color:black;
+ border: 2px solid burlywood; 
+ border-bottom: none;
+ border-bottom-color: none;
+ 
 }
 .title {
     text-align: center;
@@ -59,7 +88,7 @@ input[type=number]:focus {
 .price-filter-form {
     text-align: center;
     margin-top: 0px;
-    height: -webkit-fill-available;
+    /* height: -webkit-fill-available; */
 }
 .price-list {
     max-width: 500px;
