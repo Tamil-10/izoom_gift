@@ -21,7 +21,8 @@
       "styles": [
         "../node_modules/aos/dist/aos.css",
         "styles.css",
-        "../node_modules/font-awesome/css/font-awesome.css"
+        "../node_modules/font-awesome/css/font-awesome.css",
+        "assets/css/styles.css"
       ],
       "scripts": [
         "../node_modules/aos/dist/aos.js"

@@ -14,9 +14,10 @@ import { PricefilterComponent } from './pricefilter/pricefilter.component';
 import { CategoryComponent } from './product/searchproduct/category/category.component';
 import { WeddinggiftsComponent } from './product/searchproduct/weddinggifts/weddinggifts.component';
 import { ProductDetailComponent } from './product/searchproduct/product-detail/product-detail.component';
+import { CheckoutComponent } from './product/searchproduct/checkout/checkout.component';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/productconfig', pathMatch: 'full' },
+  { path: '', redirectTo: '/gifts', pathMatch: 'full' },
   { path: 'productconfig', component: ProductconfigComponent },
   { path: 'ProductDetailComponent/:id',component: ProductDetailComponent },
   { path: 'manageproductconfig', component: ManageproductconfigComponent },
@@ -31,7 +32,8 @@ const appRoutes: Routes = [
   { path: 'giftscarousel', component: GiftsCarouselComponent },
   { path: 'pricefilter', component: PricefilterComponent },
   { path: 'category', component: CategoryComponent },
-  { path: 'weddinggifts', component: WeddinggiftsComponent }
+  { path: 'weddinggifts', component: WeddinggiftsComponent },
+  { path: 'CheckoutComponent', component:CheckoutComponent}
 
       
 

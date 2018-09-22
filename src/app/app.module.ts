@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { MaterialModule } from './material.module';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 import { ProductconfigComponent } from './product/productconfig/productconfig.component';
 import { ManageproductconfigComponent } from './product/manageproductconfig/manageproductconfig.component';
@@ -38,6 +38,10 @@ import { CategoryComponent } from './product/searchproduct/category/category.com
 import { WeddinggiftsComponent } from './product/searchproduct/weddinggifts/weddinggifts.component';
 import { FilterByPipe } from './product/searchproduct/weddinggifts/filterBy';
 import { ProductDetailComponent } from './product/searchproduct/product-detail/product-detail.component';
+import { SafehtmlPipe } from './product/searchproduct/weddinggifts/safehtml.pipe';
+import { QuantityControlComponent } from './product/ordersummary/quantity-control/quantity-control.component';
+import { MatIconModule } from "@angular/material/icon";
+import { CheckoutComponent } from './product/searchproduct/checkout/checkout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,7 +67,10 @@ import { ProductDetailComponent } from './product/searchproduct/product-detail/p
     SortFiltersComponent,
     CategoryComponent,
     WeddinggiftsComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    SafehtmlPipe,
+    QuantityControlComponent,
+    CheckoutComponent
 
   ],
   imports: [
@@ -71,15 +78,21 @@ import { ProductDetailComponent } from './product/searchproduct/product-detail/p
     BrowserModule,
     BrowserAnimationsModule,
     MaterialModule,
+    MatIconModule,
     FormsModule,
     ReactiveFormsModule,
     NguCarouselModule,
     NgxPaginationModule,
     HttpClientModule,
     AppRoutingModule,
+    Ng2SearchPipeModule,
     AgGridModule.withComponents([]),
     NgMultiSelectDropDownModule.forRoot(),
     NgxStripeModule.forRoot('***your-stripe-publishable key***')
+  ],
+  exports:[
+    QuantityControlComponent,
+    MaterialModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

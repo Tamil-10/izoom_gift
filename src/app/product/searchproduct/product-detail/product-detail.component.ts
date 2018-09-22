@@ -3,22 +3,20 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Product } from '../../../model/product';
 import { SearchCriteria } from '../../../model/searchcriteria';
 import { ProductService } from '../../../service/product.service';
-//import { AgGridModule, AgGridNg2 } from 'ag-grid-angular';
+import { ProductInst } from '../../../model/product_inst';
+import { CartComponent } from '../../cart/cart.component';
 import { HttpResponse, HttpRequest, HttpClient, HttpParams } from '@angular/common/http';
 import { identifierModuleUrl } from "@angular/compiler";
-// import { Product } from "../../shared/models/product";
-// import { ProductService } from "../../shared/services/product.service";
-// import { LoaderSpinnerService } from "../../shared/loader-spinner/loader-spinner";
+
 
 @Component({
   selector: "app-product-detail",
   templateUrl: "./product-detail.component.html",
   styleUrls: ["./product-detail.component.scss"],
-  providers:[Product, SearchCriteria, ProductService]
+  providers:[Product, SearchCriteria, ProductInst, CartComponent]
 })
 export class ProductDetailComponent implements OnInit, OnDestroy {
-  private sub: any;
-  // product: Product;
+
   public counter : number = 1;   
   public Count : number;
   id:any;
@@ -27,15 +25,17 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   productList: Array<Product>;
   imgdatapreffix = "data:";
   imgdatasuffix = ";base64,";
-  constructor(private product:Product,private http: HttpClient, private searchCriteria: SearchCriteria, private productService: ProductService,
-    private activatedRoute: ActivatedRoute
-    // private productService: ProductService,
-    // private spinnerService: LoaderSpinnerService
-  ) {
-    // this.product = new Product();
-  }
-
+  userId: number;
+  userName: string;
+  successMsg: string;
+  constructor(private product:Product,private http: HttpClient, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent,private router: Router,
+    private activatedRoute: ActivatedRoute) { }
+   
   ngOnInit() {
+    this.searchCriteria.start = 0;
+    this.searchCriteria.limit = 10;
+    this.userId = 1;
+    this.userName = 'pandian'
     console.log(this.activatedRoute.snapshot);
     this.id=this.activatedRoute.snapshot.paramMap.get('id');
      this.productId = this.id;
@@ -63,9 +63,34 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     });
   } 
 
-  increment(product){this.counter += 1;}
+  increment(product){if(this.counter < product.available_quantity)this.counter += 1;}
   decrement(product){if(this.counter >1){this.counter -= 1;}}
+  addToCart(product) {
+    let qty = (<HTMLInputElement>document.getElementById("qty_" + product.id)).value;
+    let productInst = new ProductInst();
+    productInst.quantity = Number(qty);
+    productInst.price = product.price;
+    productInst.product_id = product.id;
+    productInst.user_id = this.userId;
+    productInst.created_by = this.userName;
+    productInst.status = 'Draft';
+    console.log(productInst);
 
+    this.productService.addProductInst(productInst).subscribe(data => {
+      console.log(data);
+      if (data.type == 4) {
+        this.successMsg = "Product Added Successfully";
+        console.log('reload cart');
+        this.productService.cartSubject.next(true);
+        setTimeout(() => {
+          this.successMsg = undefined;
+        }, 3000);
+      }
+
+    });
+    this.counter = 1;
+
+  }
   ngOnDestroy() {
    
   }

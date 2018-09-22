@@ -5,6 +5,30 @@
 @import "~ag-grid/dist/styles/ag-grid.css";
 @import "~ag-grid/dist/styles/ag-theme-balham.css";
 
+
+#cart-button {
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  
+}
+
+.cart-button2 {
+  width:60px;
+  height:60px;
+  position:fixed;
+  bottom:40px;
+  right:40px;
+  margin-top:22px;
+}
+
+
 #myform {
   text-align: center;
   height: 26px;
@@ -51,7 +75,7 @@ input.qtyminus { width:25px; height:25px;outline-style: none;	border: 0;color: #
   .row {
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 1.667em;
+    /* margin-bottom: 1.667em; */
   }
   .top-bar-links {
     margin: 0 30px 0 0;

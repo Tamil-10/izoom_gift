@@ -1,7 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ViewEncapsulation  } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
-import { Observable } from "rxjs/Observable";
-import { Observer } from "rxjs/Observer";
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Product } from '../../model/product';
 import { ProductInst } from '../../model/product_inst';
@@ -57,13 +55,6 @@ export class SearchproductComponent implements OnInit {
   //@ViewChild('filtersComponent')
   //filtersComponent: FiltersComponent;
 
-
-  /* priceFilters: any[] = [
-    { name:'All', value:'all', checked:true },
-    { name:'Price > 30.000', value:'more_30000', checked:false },
-    { name:'Price < 10.000', value:'less_10000', checked:false }
-  ]
-  originalData: any = [];*/
   
   constructor(private product: Product, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent, private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -75,7 +66,7 @@ export class SearchproductComponent implements OnInit {
     this.retrieveAllProducts();
     
   }
-  increment(product){this.counter += 1;}
+  increment(product){if(this.counter < product.available_quantity)this.counter += 1;}
   decrement(product){if(this.counter >1){this.counter -= 1;}}
   public getCurrency(): string {  
     return 'Rs.';

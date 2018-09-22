@@ -8,7 +8,9 @@ import { ProductInst } from '../../../model/product_inst';
 import { ProductService } from '../../../service/product.service';
 import { SearchCriteria } from '../../../model/searchcriteria';
 import { CartComponent } from '../../cart/cart.component';
+import { DomSanitizer } from '@angular/platform-browser';
 import { FiltersComponent } from '../../../product/searchproduct/filters/filters.component';
+import { Url } from 'url';
 
 
 @Component({
@@ -18,7 +20,7 @@ import { FiltersComponent } from '../../../product/searchproduct/filters/filters
   providers: [Product, SearchCriteria, ProductInst, CartComponent]
 })
 export class WeddinggiftsComponent implements OnInit {
-
+  filterId:string;
   productList: Array<Product>;
   imgdatapreffix = "data:";
   imgdatasuffix = ";base64,";
@@ -29,9 +31,6 @@ export class WeddinggiftsComponent implements OnInit {
   productType: number;
   public counter : number = 1;   
   public Count : number;
-
-  
-  
     //for price filter
   @Output() refreshShoppingCart = new EventEmitter();
   @Input() priceMinFilter: number | null;
@@ -42,42 +41,51 @@ export class WeddinggiftsComponent implements OnInit {
     this.priceMaxFilter = filter.priceMax;
   }
 
-  constructor(private product: Product, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private product: Product, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent, private router: Router, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { 
+    this.activatedRoute.queryParams.subscribe(params => {
+      console.log('...................' + params);
+      console.log(params);      
+      this.filterId = params['id'];
+      console.log(this.filterId); 
+      this.retrieveAllProducts();     
+    });
+
+  }
 
   ngOnInit() {
     this.searchCriteria.start = 0;
     this.searchCriteria.limit = 10;
     this.userId = 1;
     this.userName = 'pandian'
-    this.retrieveAllProducts();
-  
   }
-
   retrieveAllProducts() {
-    this.productService.retrieveProductList(this.searchCriteria).subscribe(data => {
-      
-      if (data instanceof HttpResponse ) {
+    console.log('djv------'+this.filterId)
+    this.productService.retrieveProductsByFilter(this.filterId).subscribe(data => {
+      if (data instanceof HttpResponse ) {
+        console.log(data.body);
         this.productList = JSON.parse('' + data.body);
-      }
+        console.log(this.productList);       
+    }
     });
   }
-  increment(product){this.counter += 1;}
+
+  valuechange(selectedvalue:any){
+    alert('svbdn---'+selectedvalue);
+    this.productService.retrieveProductsByFilter(this.filterId).subscribe(data => {
+         if (data instanceof HttpResponse ) {
+           console.log(data.body);
+           this.productList = JSON.parse('' + data.body).filter((item) => item.gen_type_id == selectedvalue);
+            console.log(this.productList);       
+        }
+        });
+    
+  }
+  increment(product){if(this.counter < product.available_quantity)this.counter += 1;}
     decrement(product){if(this.counter >1){this.counter -= 1;}}
   public getCurrency(): string {  
     return 'Rs.';
   }
-  // forproduct(){
-  //   this.productt = this.product.type.split(',');
-  //   for(var i=0; i < this.productt.length;i++){
-  //     if(this.productt[i] = '2')
-  //     return true;
-  //     else 
-  //     return false;
-  //     break;
-  //     console.log(this.productt[i]);
 
-  //   }
-  // }
   addToCart(product) {
     let qty = (<HTMLInputElement>document.getElementById("qty_" + product.id)).value;
     let productInst = new ProductInst();
@@ -95,13 +103,13 @@ export class WeddinggiftsComponent implements OnInit {
         this.successMsg = "Product Added Successfully";
         console.log('reload cart');
         this.productService.cartSubject.next(true);
-        setTimeout(() => {
+        setTimeout(() => {          
           this.successMsg = undefined;
         }, 3000);
       }
-      this.counter = 1;
+     
     });
-    
+    this.counter = 1;
   }
   proceedToOrderSummary() {
     this.router.navigateByUrl('ordersummary')

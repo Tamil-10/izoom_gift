@@ -4,6 +4,30 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import "~ag-grid/dist/styles/ag-grid.css";
 @import "~ag-grid/dist/styles/ag-theme-balham.css";
+
+#cart-button {
+  position:fixed;
+  width:60px;
+  height:60px;
+  bottom:40px;
+  right:40px;
+
+  color:#FFF;
+  border-radius:50px;
+  text-align:center;
+  
+}
+
+.cart-button2 {
+  width:60px;
+  height:60px;
+  position:fixed;
+  bottom:40px;
+  right:40px;
+  margin-top:22px;
+}
+
+
 #myform {
   text-align: center;
   height: 26px;

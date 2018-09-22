@@ -8,6 +8,7 @@ export class PriceFilterPipe implements PipeTransform {
   transform(list, minPrice: number | undefined, maxPrice:number | undefined) {
     // ES6 array destructuring
     let filter_list = list;
+    
     if (minPrice) {
       filter_list = filter_list.filter(_item => {
         return _item.price >= +minPrice;
@@ -20,6 +21,7 @@ export class PriceFilterPipe implements PipeTransform {
       });
     }
     return  filter_list;
+   
   }
 
 }

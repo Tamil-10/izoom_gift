@@ -37,18 +37,18 @@ export class ProductconfigComponent implements OnInit,OnDestroy {
   selectedItems = [];
 
     productType = [
-     { id: 1, name: 'Birthday Gifts', "isSelected": false },
-      { id: 2, name: 'Wedding Gifts', "isSelected": false },
-      { id: 3, name: 'Anniversary Gifts', "isSelected": false },
-      { id: 4, name: 'personalized Gifts', "isSelected": false },
-      { id: 5, name: 'Flowers & Cakes', "isSelected": false },
-      { id: 6, name: 'special Gifts', "isSelected": false }
+     { id: '1', name: 'Birthday Gifts', "isSelected": false },
+      { id: '2', name: 'Wedding Gifts', "isSelected": false },
+      { id: '3', name: 'Anniversary Gifts', "isSelected": false },
+      { id: '4', name: 'personalized Gifts', "isSelected": false },
+      { id: '5', name: 'Flowers & Cakes', "isSelected": false },
+      { id: '6', name: 'special Gifts', "isSelected": false }
 ];
     
      genderType = [
-     { id: 1, name: 'kids', "isSelected": false },
-      { id: 2, name: 'Men', "isSelected": false },
-      { id: 3, name: 'Women', "isSelected": false },
+     { id: '1', name: 'kids', "isSelected": false },
+      { id: '2', name: 'Men', "isSelected": false },
+      { id: '3', name: 'Women', "isSelected": false },
 ];
     
   
@@ -128,11 +128,12 @@ export class ProductconfigComponent implements OnInit,OnDestroy {
         this.errorMsg = undefined;
       }, 3000);
     }
-      this.product.gender_type=this.genderType.filter(opt => opt.isSelected)
-                                    .map(opt => opt.id);
-    this.product.type=this.productType
-              .filter(opt => opt.isSelected)
-              .map(opt => opt.id);
+    var arr = this.genderType.filter(opt => opt.isSelected)
+    .map(opt => opt.id);         
+      this.product.gender_type= arr.join(', '); 
+      var gentype = this.productType.filter(opt => opt.isSelected).map(opt => opt.id);
+      
+      this.product.type = gentype.join(', ');
     this.product.file=this.file;
    this.product.status='Active';
     console.log(this.product);

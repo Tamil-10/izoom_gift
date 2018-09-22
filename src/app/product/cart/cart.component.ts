@@ -30,7 +30,7 @@ export class CartComponent implements OnInit {
      this.getCartCount();
     /*setInterval(() => {
       this.getCartCount();
-    }, 1000);*/
+    }, 1000);*/    
 
   }
 
