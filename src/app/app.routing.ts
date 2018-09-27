@@ -15,6 +15,7 @@ import { CategoryComponent } from './product/searchproduct/category/category.com
 import { WeddinggiftsComponent } from './product/searchproduct/weddinggifts/weddinggifts.component';
 import { ProductDetailComponent } from './product/searchproduct/product-detail/product-detail.component';
 import { CheckoutComponent } from './product/searchproduct/checkout/checkout.component';
+import { RegisterComponent } from './register/index';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/gifts', pathMatch: 'full' },
@@ -33,7 +34,9 @@ const appRoutes: Routes = [
   { path: 'pricefilter', component: PricefilterComponent },
   { path: 'category', component: CategoryComponent },
   { path: 'weddinggifts', component: WeddinggiftsComponent },
-  { path: 'CheckoutComponent', component:CheckoutComponent}
+  { path: 'CheckoutComponent', component:CheckoutComponent},
+  { path: 'register', component: RegisterComponent },
+
 
       
 

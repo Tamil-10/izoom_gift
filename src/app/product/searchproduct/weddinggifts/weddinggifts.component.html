@@ -7,7 +7,7 @@
               <li><button type="button" [value]="2" id="startBtn" (click)="valuechange($event.target.value)" >Men</button></li>
               <li><button type="button" [value]="3" id="startBtn" (click)="valuechange($event.target.value)">Women</button></li>             
               <!-- <li ><app-filter  (filterPrice)='filterPrice($event)'></app-filter></li>  -->
-              <li>  <input placeholder="search here" type="text" [(ngModel)]="term"></li> 
+              <li>  <input matInput placeholder="search here" type="text" [(ngModel)]="term"></li> 
             </ul>
            
             <ul class="right hide-on-med-and-down">
@@ -35,6 +35,7 @@
 </div>
 
 <div class="container">
+  <button (click)="valuechanged()"></button>
   <div class="row isotope-grid">
       <!-- Block2 --> 
        <li *ngFor="let product of (productList | priceFilter:priceMinFilter:priceMaxFilter | paginate: { itemsPerPage: 10, currentPage: p } |filter:term) let i = index" class="forlist">
@@ -102,7 +103,11 @@ width: 110px;" >Add To Cart</button>
           </div>
          
      </div>
-     </li>
+<!--      
+     <div *ngIf="product == 0 || productList.length == 0">
+      No orders found
+  </div>
+     </li> -->
    
   </div>
   <!-- <div *ngIf="productList?.length==0"><p>no products</p></div> -->

@@ -8,13 +8,15 @@ import { Subject, BehaviorSubject } from 'rxjs';
 import { Product } from '../model/product';
 import { ProductInst} from '../model/product_inst';
 import { SearchCriteria } from '../model/searchcriteria';
-import { CartComponent } from '../product/cart/cart.component'
+import { CartComponent } from '../product/cart/cart.component';
+import { User } from '../model/user';
 @Injectable()
 export class ProductService {
 
     constructor(private http: HttpClient) { }
     cartSubject = new Subject();
      public cartListSubject = new BehaviorSubject([]);
+
     productConfiguration(product: Product): Observable<HttpEvent<{}>> {
         let formData = new FormData();
         formData.append('type', product.type);
@@ -31,6 +33,24 @@ export class ProductService {
             responseType: 'text'
         });
         return this.http.request(req);
+    }
+
+    create(user: User):Observable<HttpEvent<{}>> {
+        alert(user.username);
+       
+        let formData = new FormData();
+        formData.append('username', user.username);
+        formData.append('firstname', user.firstName);
+        formData.append('lastname', user.lastName);
+        formData.append('password', '' + user.password);
+
+
+
+        const req = new HttpRequest('POST', '/api/product/create', formData , {
+            reportProgress: true,
+            responseType: 'text'
+        });
+       return this.http.request(req);
     }
 
     retrieveProductList(searchCriteria : SearchCriteria): Observable<HttpEvent<{}>> {
@@ -50,7 +70,7 @@ export class ProductService {
         });
         return this.http.request(req);
     }
-   
+
     deleteProduct(input: any): Observable<HttpEvent<{}>> {
         const req = new HttpRequest('DELETE', '/api/product/deleteProduct', input, {
             reportProgress: true,

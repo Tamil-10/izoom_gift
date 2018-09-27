@@ -80,6 +80,7 @@ export class WeddinggiftsComponent implements OnInit {
         });
     
   }
+  
   increment(product){if(this.counter < product.available_quantity)this.counter += 1;}
     decrement(product){if(this.counter >1){this.counter -= 1;}}
   public getCurrency(): string {  

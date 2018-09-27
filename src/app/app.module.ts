@@ -42,6 +42,8 @@ import { SafehtmlPipe } from './product/searchproduct/weddinggifts/safehtml.pipe
 import { QuantityControlComponent } from './product/ordersummary/quantity-control/quantity-control.component';
 import { MatIconModule } from "@angular/material/icon";
 import { CheckoutComponent } from './product/searchproduct/checkout/checkout.component';
+import { RegisterComponent } from './register/index';
+import { UserService } from './service/user.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,7 +72,8 @@ import { CheckoutComponent } from './product/searchproduct/checkout/checkout.com
     ProductDetailComponent,
     SafehtmlPipe,
     QuantityControlComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    RegisterComponent
 
   ],
   imports: [
@@ -94,7 +97,7 @@ import { CheckoutComponent } from './product/searchproduct/checkout/checkout.com
     QuantityControlComponent,
     MaterialModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

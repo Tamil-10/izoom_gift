@@ -73,7 +73,7 @@ removeFromCart(index){
   console.log('sd----------'+index);
   console.log('sd----------'+this.orderList[index].product_id);  
   this.productService.deleteCartItem(this.orderList[index].product_id).subscribe(k =>{
-    if (k.type == 4) {
+    if (k.type == 4) { 
       console.log('item deleted');
       this.productService.cartSubject.next(true);
     }
