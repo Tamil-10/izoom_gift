@@ -16,6 +16,8 @@ import { WeddinggiftsComponent } from './product/searchproduct/weddinggifts/wedd
 import { ProductDetailComponent } from './product/searchproduct/product-detail/product-detail.component';
 import { CheckoutComponent } from './product/searchproduct/checkout/checkout.component';
 import { RegisterComponent } from './register/index';
+import { LoginComponent } from './login/index';
+
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/gifts', pathMatch: 'full' },
@@ -36,6 +38,7 @@ const appRoutes: Routes = [
   { path: 'weddinggifts', component: WeddinggiftsComponent },
   { path: 'CheckoutComponent', component:CheckoutComponent},
   { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
 
 
       

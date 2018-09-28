@@ -44,6 +44,10 @@ import { MatIconModule } from "@angular/material/icon";
 import { CheckoutComponent } from './product/searchproduct/checkout/checkout.component';
 import { RegisterComponent } from './register/index';
 import { UserService } from './service/user.service';
+import { LoginComponent } from './login/index';
+import { AlertService} from './service/alert.service';
+import { AuthenticationService } from './service/authentication.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +77,8 @@ import { UserService } from './service/user.service';
     SafehtmlPipe,
     QuantityControlComponent,
     CheckoutComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
 
   ],
   imports: [
@@ -97,7 +102,7 @@ import { UserService } from './service/user.service';
     QuantityControlComponent,
     MaterialModule
   ],
-  providers: [ProductService, UserService],
+  providers: [ProductService, UserService,AlertService,AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -35,23 +35,7 @@ export class ProductService {
         return this.http.request(req);
     }
 
-    create(user: User):Observable<HttpEvent<{}>> {
-        alert(user.username);
-       
-        let formData = new FormData();
-        formData.append('username', user.username);
-        formData.append('firstname', user.firstName);
-        formData.append('lastname', user.lastName);
-        formData.append('password', '' + user.password);
-
-
-
-        const req = new HttpRequest('POST', '/api/product/create', formData , {
-            reportProgress: true,
-            responseType: 'text'
-        });
-       return this.http.request(req);
-    }
+   
 
     retrieveProductList(searchCriteria : SearchCriteria): Observable<HttpEvent<{}>> {
         
