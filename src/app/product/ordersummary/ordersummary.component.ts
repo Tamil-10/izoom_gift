@@ -5,6 +5,7 @@ import { ProductService } from '../../service/product.service';
 import { CartBaseComponent } from './cart-base.component';
 import { ProductInst } from '../../model/product_inst';
 import { CartComponent } from '../cart/cart.component';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-ordersummary',
   templateUrl: './ordersummary.component.html',
@@ -20,8 +21,9 @@ export class OrdersummaryComponent extends CartBaseComponent implements OnInit {
   imgdatapreffix = "data:";
   imgdatasuffix = ";base64,";
   total = 0;
+  cookieValue = 'UNKNOWN';
   @Output() refreshShoppingCart = new EventEmitter();
-  constructor(private product:ProductInst, protected productService: ProductService, private cartComponent: CartComponent,  private router: Router, private activatedRoute: ActivatedRoute) {    
+  constructor(private product:ProductInst, protected productService: ProductService, private cartComponent: CartComponent,  private router: Router, private activatedRoute: ActivatedRoute, private cookieService: CookieService) {    
     super(productService);
     this.userId = '1';
    

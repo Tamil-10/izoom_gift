@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener, ElementRef  } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 import {
   trigger,
@@ -30,11 +31,11 @@ import {MatButtonModule} from '@angular/material/button';
   ]
 })
 export class GiftsComponent implements OnInit {
-
+  cookieValue = 'UNKNOWN';
   
   state = 'show'
 
-  constructor(public el: ElementRef) { }  
+  constructor(public el: ElementRef,private cookieService: CookieService) { }  
   @HostListener('window:scroll', ['$event'])
   checkScroll() {
     const componentPosition = this.el.nativeElement.offsetTop
@@ -47,7 +48,10 @@ export class GiftsComponent implements OnInit {
     }
 
   }
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.cookieValue = this.cookieService.get('LoggedUser');
+  }
   
   
 }

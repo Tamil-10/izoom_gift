@@ -3,23 +3,27 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { HttpResponse  } from '@angular/common/http';
 import { AlertService } from '../service/alert.service';
 import { AuthenticationService} from '../service/authentication.service';
-
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
     moduleId: module.id.toString(),
-    templateUrl: 'login.component.html'
+    templateUrl: 'login.component.html',
+    styleUrls:['login.component.css']
 })
 
 export class LoginComponent implements OnInit {
     model: any = {};
     loading = false;
+    cookieValue = 'UNKNOWN';
     returnUrl: string;
     status:any;
     constructor(
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService) { }
+        private alertService: AlertService,
+        private cookieService: CookieService
+    ) { }
 
     ngOnInit() {
         // reset login status
@@ -34,20 +38,31 @@ export class LoginComponent implements OnInit {
         this.authenticationService.login(this.model.username, this.model.password)
             .subscribe(
                 data => {
-         
-                   this.router.navigate([this.returnUrl]);
-                //   if (data instanceof HttpResponse ) {
-                //       alert("dsakfjd");
-                //     console.log("15414"+data.body);
-                //   this.status =  data.body;
-                //   alert('nsdf---------'+this.status)
-                //   alert('asa-'+this.status);}
-                //   console.log('hwjfbh---'+this.status)
+                    
                   if (data.type == 4) {
                       alert('success');
                       if(data instanceof HttpResponse){
-                          console.log('sdahb==='+data.body);    
-                      }
+                        console.log('result==='+data.body);    
+
+                        if(data.body=="success")
+                        {
+                                
+                            this.cookieService.set( 'LoggedUser', this.model.username );
+                            this.cookieValue = this.cookieService.get('LoggedUser');
+
+                            alert("cookie value."+this.cookieService.get('LoggedUser'));
+                            this.router.navigate([this.returnUrl]);
+                        }
+                        else{
+                            alert("Incorrect Username/Password");
+                            //location.reload();
+                            this.alertService.loginerror();
+                    this.loading = false;
+                        }
+                      
+                      
+                      
+                        }
                   
                   }
                 },

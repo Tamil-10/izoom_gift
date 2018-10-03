@@ -2,10 +2,11 @@
 import { HttpClient, HttpHeaders, HttpEventType, HttpRequest, HttpErrorResponse, HttpEvent, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable()
 export class AuthenticationService {
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private cookieService: CookieService) { }
 
     // login(username: string, password: string) {
     //     return this.http.post<any>('/api/authenticate', { username: username, password: password })
@@ -39,6 +40,9 @@ alert("authenticate function")
     }
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
+       // this.cookieService.delete('LoggedUser');
+        this.cookieService.set( 'LoggedUser', 'UNKNOWN' );
+alert("logout function "+this.cookieService.get('LoggedUser'));
+      //  localStorage.removeItem('currentUser');
     }
 }

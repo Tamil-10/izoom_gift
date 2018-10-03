@@ -11510,7 +11510,8 @@
         .pers-actions>span,
         a.underline,
         li.sec-menu-item>a:hover {
-            text-decoration: underline
+            text-decoration: none;
+            
         }
         
         .btn-primary {
@@ -12026,8 +12027,10 @@
         
         li.sec-menu-item {
             display: inline-block;
-            padding: 0 1em;
-            color: #fff
+            padding: 1%;
+            float: right;
+            font-size: medium;
+            color: #fff;
         }
         
         li.sec-menu-item:last-child {
@@ -21441,6 +21444,7 @@
     vertical-align: baseline;
 } */
 ol, ul {
+    height: 100%;
     list-style: none;
 }
 .selection-icon:hover .s-icon {

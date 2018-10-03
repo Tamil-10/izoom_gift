@@ -1,5 +1,5 @@
 
-
+{{cookieValue}}
     <div class="row">
       <div class="form-group col-sm-12">
         <div id="errorDiv" class="form-group" style="background-color: #0d5d17;text-align:center">
@@ -38,9 +38,11 @@
                           <input type='button' value='+' (click)="increment(product)" class='qtyplus'>
                           
                         </div>
-                    <button type="button" id="startBtn" (click)="addToCart(product)" style="height: 40px;
+                    <button type="button" id="startBtn" *ngIf="cookieValue!='UNKNOWN'"  (click)="addToCart(product)" style="height: 40px;
     width: 110px;" >Add To Cart</button>
-						
+    <button type="button" id="startBtn" *ngIf="cookieValue=='UNKNOWN'"  [routerLink]="['/login']" style="height: 40px;
+    width: 110px;" >Add To Cart</button>
+                        
 							</a>
 						</div>
 						<div class="block2-txt flex-w flex-t p-t-14">

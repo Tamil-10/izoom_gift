@@ -7,6 +7,8 @@ import { ProductService } from '../../service/product.service';
 import { SearchCriteria } from '../../model/searchcriteria';
 import { CartComponent } from '../cart/cart.component';
 import { FiltersComponent } from '../../product/searchproduct/filters/filters.component';
+import { CookieService } from 'ngx-cookie-service';
+
 import { combineAll } from 'rxjs/operators';
 declare var jquery:any;
 declare var $ :any;
@@ -26,6 +28,7 @@ export class SearchproductComponent implements OnInit {
   imgdatapreffix = "data:";
   imgdatasuffix = ";base64,";
   userId: number;
+  cookieValue = 'UNKNOWN';
   userName: string;
   successMsg: string;
   filter: string;
@@ -56,13 +59,14 @@ export class SearchproductComponent implements OnInit {
   //filtersComponent: FiltersComponent;
 
   
-  constructor(private product: Product, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent, private router: Router, private activatedRoute: ActivatedRoute) { }
+  constructor(private product: Product, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent, private router: Router, private activatedRoute: ActivatedRoute,private cookieService: CookieService) { }
 
   ngOnInit() {
     this.searchCriteria.start = 0;
     this.searchCriteria.limit = 10;
     this.userId = 1;
     this.userName = 'pandian'
+    this.cookieValue = this.cookieService.get('LoggedUser');
     this.retrieveAllProducts();
     
   }

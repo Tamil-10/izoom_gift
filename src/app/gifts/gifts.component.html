@@ -67,21 +67,29 @@
                 c.async = !0, c.src = "../www.googletagmanager.com/gtm279d.js?id=GTM-K992H8", p.parentNode.insertBefore(c, p)
             }(window, document, "script", "dataLayer")
     </script> -->
-    <!-- <div class="header-container">
+    <div class="header-container">
         
         <div class="row no-margin bg-dark-red sec-header">
             <div class="col s12 text-right">
                 <ul>
-                    <li class="sec-menu-item">Quickly Go To:</li>
+                    <!-- <li class="sec-menu-item">Quickly Go To:</li>
                     <li class="sec-menu-item"><app-filter  (filterPrice)='filterPrice($event)'></app-filter></li>
                     <li class="sec-menu-item"><a href="anniversary-gifts.html">Gender filter</a></li>
                     <li class="sec-menu-item"><a href="same-day-delivery-gifts.html">Occasion</a></li>
               		<li class="sec-menu-item"><a href="birthday-gifts.html">Location</a></li>
-              		<li class="sec-menu-item"><a href="birthday-gifts.html">Preferred delivery</a></li>
+                      <li class="sec-menu-item"><a href="birthday-gifts.html">Preferred delivery</a></li> -->
+                      
+
+                       
+                        <!-- <p>{{cookieValue}}</p> -->
+                        <li *ngIf="cookieValue=='UNKNOWN'"  class="sec-menu-item"><a [routerLink]="['/login']">Login</a></li>
+                        <li *ngIf="cookieValue=='UNKNOWN'"  class="sec-menu-item"><a [routerLink]="['/register']">Sign Up</a></li>
+                        <li *ngIf="cookieValue!='UNKNOWN'"  class="sec-menu-item"><a [routerLink]="['/login']">Logout</a></li>
+
                 </ul>
             </div>
         </div> 
-    </div>-->
+    </div>
   <!--   <div id="newMegaMenuTemplate" data-ishome="true" data-isnotfound="" data-sbi_omp_flag="false">
         <div class="gc-mm-wrapper" id="gc-mm-wrapper">
             <div class="gc-flex gc-mm-header">

@@ -28,11 +28,16 @@ export class AlertService {
         this.subject.next({ type: 'success', text: message });
     }
 
-    error(message: string, keepAfterNavigationChange = false) {
+    error(keepAfterNavigationChange = false) {
+        alert("error function");
         this.keepAfterNavigationChange = keepAfterNavigationChange;
-        this.subject.next({ type: 'error', text: message });
+        this.subject.next({ text: "Email Id already Exists!" });
     }
-
+    loginerror(keepAfterNavigationChange = false) {
+        alert("loginerror function");
+        this.keepAfterNavigationChange = keepAfterNavigationChange;
+        this.subject.next({ type: 'success', text: "Invalid Username/Password.." });
+    }
     getMessage(): Observable<any> {
         return this.subject.asObservable();
     }

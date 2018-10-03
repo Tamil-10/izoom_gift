@@ -45,8 +45,10 @@ import { CheckoutComponent } from './product/searchproduct/checkout/checkout.com
 import { RegisterComponent } from './register/index';
 import { UserService } from './service/user.service';
 import { LoginComponent } from './login/index';
-import { AlertService} from './service/alert.service';
-import { AuthenticationService } from './service/authentication.service';
+import {  AuthenticationService } from './service/authentication.service';
+import { AlertService } from './service/alert.service';
+import { AlertComponent } from './_directives/index';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,7 @@ import { AuthenticationService } from './service/authentication.service';
     PollconfigComponent,
     ManagepollconfigComponent,
     PublishedpollsComponent,
+    AlertComponent,
     PaymentgatwayComponent,
     CartComponent,
     OrdersummaryComponent,
@@ -102,7 +105,7 @@ import { AuthenticationService } from './service/authentication.service';
     QuantityControlComponent,
     MaterialModule
   ],
-  providers: [ProductService, UserService,AlertService,AuthenticationService],
+  providers: [ProductService, UserService,AuthenticationService,AlertService,CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

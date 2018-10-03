@@ -9,6 +9,7 @@ import { findIndex } from 'rxjs/operators';
 import { FilterByBrandPipe } from '../searchproduct/genderfilter/filterByBrand.pipe';
 import { FilterConditionType } from 'ag-grid/dist/lib/filter/baseFilter';
 import { filter } from 'rxjs/operator/filter';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-productconfig',
@@ -26,9 +27,10 @@ export class ProductconfigComponent implements OnInit,OnDestroy {
     type:number;
     products:object;
    proId=63;
+   cookieValue = 'UNKNOWN';
     private productList: Array<Product> = [];
   @ViewChild('fileInput') fileInput: ElementRef;
-  constructor(private product:Product, private productService:ProductService, private searchCriteria: SearchCriteria, private router: Router, private activatedRoute: ActivatedRoute) { 
+  constructor(private product:Product, private productService:ProductService, private searchCriteria: SearchCriteria, private router: Router, private activatedRoute: ActivatedRoute, private cookieService: CookieService) { 
      console.log('ProductconfigComponent Constructor');
   }
    selectedproduct = [];
