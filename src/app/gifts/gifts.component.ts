@@ -32,7 +32,8 @@ import {MatButtonModule} from '@angular/material/button';
 })
 export class GiftsComponent implements OnInit {
   cookieValue = 'UNKNOWN';
-  
+  socialUser = 'UNKNOWN';
+
   state = 'show'
 
   constructor(public el: ElementRef,private cookieService: CookieService) { }  
@@ -51,6 +52,17 @@ export class GiftsComponent implements OnInit {
   ngOnInit() {
 
     this.cookieValue = this.cookieService.get('LoggedUser');
+    this.socialUser = this.cookieService.get('socialUser');
+
+    alert('cookie----'+this.cookieValue);
+    if(this.cookieValue=='')
+    {
+      this.cookieValue = 'UNKNOWN';
+    }
+    if(this.socialUser=='')
+    {
+      this.socialUser = 'UNKNOWN';
+    }
   }
   
   

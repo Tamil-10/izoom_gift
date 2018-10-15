@@ -1,17 +1,22 @@
 // /**
 //  * Created by Andrew on 7/30/2017.
-//  */
-import { Output, EventEmitter } from '@angular/core';
+
+import { Output, EventEmitter, OnInit } from '@angular/core';
 import {ProductService} from '../../service/product.service';
 import { Product } from '../../model/product';
 import { AngularWaitBarrier } from 'blocking-proxy/built/lib/angular_wait_barrier';
-export class CartBaseComponent{
+export class CartBaseComponent implements OnInit{
     public orderList:any;
     public totalPrice: number;
     @Output() refreshShoppingCart = new EventEmitter();
     constructor(protected productService: ProductService) {
         this.loadCart();
     }
+    
+  ngOnInit() {
+ 
+  }
+
     loadCart = () => {
         this.productService.cartListSubject
             .subscribe(res => {
@@ -19,6 +24,7 @@ export class CartBaseComponent{
                 let total =  0;
                 for(let product of this.orderList) {
                     total += product.price * product.quantity;
+                    
                 }
                 this.totalPrice = total;
             })

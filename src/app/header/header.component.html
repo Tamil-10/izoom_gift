@@ -1,0 +1,28 @@
+<div class="header-container">
+        
+  <div class="row no-margin bg-dark-red sec-header">
+    <div class="col s12">
+        <ul class="text-left">
+            <li  style=" margin-top: 4px;" class="sec-menu-item menu-item"><a [routerLink]="['/gifts']">Home</a></li>
+
+               
+        </ul>
+    </div> 
+    <div class="col s12 text-right">
+          <ul>
+       
+                 
+                  <!-- <p>{{cookieValue}}</p> -->
+                  <li  *ngIf="cookieValue=='UNKNOWN' "  class="sec-menu-item"><a [routerLink]="['/register']">Sign Up</a></li>
+                  <li *ngIf="cookieValue=='UNKNOWN' "  class="sec-menu-item"><a [routerLink]="['/login']">Login</a></li>
+                  <!-- <li *ngIf="cookieValue=='UNKNOWN'&& socialUser=='UNKNOWN'"  class="sec-menu-item"><a [routerLink]="['/login']">Login</a></li> -->
+                  
+                  <li *ngIf="cookieValue!='UNKNOWN' "  class="sec-menu-item"><a [routerLink]="['/login']">Logout</a></li>
+                  <li *ngIf="cookieValue!='UNKNOWN' "  class="sec-menu-item "><a [routerLink]="['/my-orders']"><i class="fa fa-list" >      
+                </i>Orders</a></li>
+                <!-- *ngIf="cookieValue!='UNKNOWN' " -->
+                  <li   class="sec-menu-item">  <a  [routerLinkActive]="['active']" [routerLink]="['/ordersummary']"><app-cart></app-cart> </a> </li>
+          </ul>
+      </div>
+  </div> 
+</div>

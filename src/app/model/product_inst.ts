@@ -11,4 +11,7 @@ export class ProductInst {
     created_by: string;
     modified_date: Date;
     modified_by: string;
+    file:File; 
+    content_type:string;
+    content:any;
 }

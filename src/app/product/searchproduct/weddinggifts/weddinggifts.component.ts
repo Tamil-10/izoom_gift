@@ -28,6 +28,7 @@ export class WeddinggiftsComponent implements OnInit {
   userName: string;
   successMsg: string;
   filter: string;
+  term:any;
   productType: number;
   public counter : number = 1;   
   public Count : number;
@@ -70,7 +71,7 @@ export class WeddinggiftsComponent implements OnInit {
   }
 
   valuechange(selectedvalue:any){
-    alert('svbdn---'+selectedvalue);
+  
     this.productService.retrieveProductsByFilter(this.filterId).subscribe(data => {
          if (data instanceof HttpResponse ) {
            console.log(data.body);
@@ -111,6 +112,13 @@ export class WeddinggiftsComponent implements OnInit {
      
     });
     this.counter = 1;
+  }
+  reset_filter(){
+    this.retrieveAllProducts();   
+    this.priceMinFilter=null;
+   this.priceMaxFilter=null;
+   this.term='';
+
   }
   proceedToOrderSummary() {
     this.router.navigateByUrl('ordersummary')

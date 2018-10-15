@@ -46,7 +46,7 @@
       </div>
     </div>
   </div>
-</div> -->
+</div> --><app-header></app-header>
 <div class="cart-page-container">
   <div class="cart-page-header">
       <h1>Shopping Cart</h1>
@@ -107,12 +107,14 @@
               </div>
           </div>
       </div>
+
       <div class="cart-buttons">
           <div class="continue-shopping"><a [routerLink]="['/gifts']">continue shopping</a></div>
-          <div class="checkout-button button button-primary button-large" [routerLink]="['/CheckoutComponent']">Checkout ({{totalPrice | currency :'INR':true}})</div>
+          <div class="checkout-button button button-primary button-large" *ngIf="cookieValue!='UNKNOWN'" [routerLink]="['/shippingaddress']">Checkout ({{totalPrice | currency :'INR':true}})</div>
+          <div class="checkout-button button button-primary button-large" *ngIf="cookieValue=='UNKNOWN'"  [routerLink]="['/login']">Checkout ({{totalPrice | currency :'INR':true}})</div>
       </div>
   </div>
-  <div class="cart-page-content" *ngIf="orderList?.length == 0">
+  <div class="cart-page-content" *ngIf="orderList?.length == 0 || orderList?.length ==''|| orderList?.length == null">
       <h4>Your cart is empty.</h4>
       <a [routerLink]="['/gifts']">Go shopping</a>
   </div>

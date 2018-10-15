@@ -17,7 +17,14 @@ import { ProductDetailComponent } from './product/searchproduct/product-detail/p
 import { CheckoutComponent } from './product/searchproduct/checkout/checkout.component';
 import { RegisterComponent } from './register/index';
 import { LoginComponent } from './login/index';
-
+import { ShippingaddressComponent } from './shippingaddress/shippingaddress.component';
+import { EditshippingComponent } from './shippingaddress/editshipping/editshipping.component';
+import { ReceiptComponent } from './shippingaddress/receipt/receipt.component';
+import { HeaderComponent } from './header/header.component';
+import { AddPostComponent } from './add-post/add-post.component';
+import { AdminComponent } from './admin/admin.component';
+import { ThankyouComponent } from './thankyou/thankyou.component';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/gifts', pathMatch: 'full' },
@@ -39,8 +46,15 @@ const appRoutes: Routes = [
   { path: 'CheckoutComponent', component:CheckoutComponent},
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
-
-
+  { path: 'shippingaddress', component : ShippingaddressComponent },
+  { path: 'editshipping', component : EditshippingComponent },
+  { path: 'receipt', component : ReceiptComponent },
+  { path : 'header', component: HeaderComponent},
+  { path : 'admin', component: AdminComponent},
+  { path : 'add-post', component: AddPostComponent},
+  { path : 'thankyou', component: ThankyouComponent},
+  { path : 'my-orders', component : MyOrdersComponent}
+  
       
 
 

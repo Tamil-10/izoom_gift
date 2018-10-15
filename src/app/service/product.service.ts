@@ -10,6 +10,8 @@ import { ProductInst} from '../model/product_inst';
 import { SearchCriteria } from '../model/searchcriteria';
 import { CartComponent } from '../product/cart/cart.component';
 import { User } from '../model/user';
+
+
 @Injectable()
 export class ProductService {
 
@@ -35,23 +37,6 @@ export class ProductService {
         return this.http.request(req);
     }
 
-    create(user: User):Observable<HttpEvent<{}>> {
-        alert(user.username);
-       
-        let formData = new FormData();
-        formData.append('username', user.username);
-        formData.append('firstname', user.firstName);
-        formData.append('lastname', user.lastName);
-        formData.append('password', '' + user.password);
-
-
-
-        const req = new HttpRequest('POST', '/api/product/create', formData , {
-            reportProgress: true,
-            responseType: 'text'
-        });
-       return this.http.request(req);
-    }
 
     retrieveProductList(searchCriteria : SearchCriteria): Observable<HttpEvent<{}>> {
         
@@ -125,4 +110,27 @@ export class ProductService {
         });
         return this.http.request(req);
     }
+    updateProductInst(input: any) {
+        const req = new HttpRequest('POST', '/api/productinst/updateProduct', input, {
+            reportProgress: true,
+            responseType: 'text'
+        });
+        
+        return this.http.request(req);
+      
+       //this.cartSubject.next(<CartComponent>{ loaded: true, products: this.Products });
+    }
+    
+    retrieveOrders(userId:string): Observable<HttpEvent<{}>> {
+        alert('order retrieve '+userId)
+        
+        const req = new HttpRequest('GET', '/api/productinst/retrieveOrders/' + userId, {
+            reportProgress: true,
+            responseType: 'text'
+        });
+        return this.http.request(req);
+        
+    }
+  
+   
 }

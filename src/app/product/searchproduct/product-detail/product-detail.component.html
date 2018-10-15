@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="row">
   <div class="form-group col-sm-12">
     <div id="errorDiv" class="form-group" style="background-color: #0d5d17;text-align:center">
@@ -37,7 +38,9 @@
                   </div>
              </div>
              <br>
-             <button class="btn btn-default add-to-cart" id="startBtn" (click)="addToCart(product)"><i class="fa fa-shopping-cart"></i>Add to Cart</button>
+             <button class="btn btn-default add-to-cart" type="button" id="startBtn" *ngIf="cookieValue!='UNKNOWN'"  (click)="addToCart(product)" ><i class="fa fa-shopping-cart"></i>Add To Cart</button>
+    <button  class="btn btn-default add-to-cart" type="button" id="startBtn" *ngIf="cookieValue=='UNKNOWN'"  [routerLink]="['/login']" ><i class="fa fa-shopping-cart"></i>Add To Cart</button>
+           
            			
         
           
@@ -46,9 +49,9 @@
       </div>
     </div>
     </div>
-    <div id="cart-button">
+    <!-- <div id="cart-button">
       <button style="outline: none;" mat-raised-button color="primary" mat-icon-button id = "cart-button2" [routerLinkActive]="['active']" [routerLink]="['/ordersummary']">          
         <mat-icon>shopping_cart</mat-icon><app-cart></app-cart>
       </button>
-    </div>
+    </div> -->
   

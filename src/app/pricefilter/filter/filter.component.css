@@ -51,9 +51,11 @@
 	text-align: -webkit-center;
 }
 .form-control{
-margin-top: 10px;
+    width: 60%;
+    height: 60%;
+margin-top: 6px;
 border: 2px solid #bfbbbb;
-padding: 6px;
+padding: 0px;
 background-color: #efefef;
 }
 .form-control:active{

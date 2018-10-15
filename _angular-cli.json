@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "../node_modules/aos/dist/aos.css",
+        
         "styles.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "assets/css/styles.css"

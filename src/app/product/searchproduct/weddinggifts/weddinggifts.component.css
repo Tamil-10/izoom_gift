@@ -142,7 +142,7 @@ input.qtyminus { width:25px; height:25px;outline-style: none;	border: 0;color: #
     -webkit-tap-highlight-color: transparent;
   }
   .top-bar-links li {
-    display: inline-block;
+    display: inline-flex;
     font-size: 11px;
     margin-right: 25px;
     overflow: hidden;

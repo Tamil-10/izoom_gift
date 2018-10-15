@@ -8,6 +8,8 @@ import { SearchCriteria } from '../../model/searchcriteria';
 import { CartComponent } from '../cart/cart.component';
 import { FiltersComponent } from '../../product/searchproduct/filters/filters.component';
 import { CookieService } from 'ngx-cookie-service';
+import { AddCartService } from '../../service/add-cart.service';
+
 
 import { combineAll } from 'rxjs/operators';
 declare var jquery:any;
@@ -24,6 +26,8 @@ export class SearchproductComponent implements OnInit {
     /* public get maxPriceOptions(): any[] { 
     return this.priceMinFilter ?  this._priceOptions.filter(p => p.productPrice > this.priceMinFilter) : this._priceOptions;
   } */
+  model: any = {};
+
   productList: Array<Product>;
   imgdatapreffix = "data:";
   imgdatasuffix = ";base64,";
@@ -59,14 +63,23 @@ export class SearchproductComponent implements OnInit {
   //filtersComponent: FiltersComponent;
 
   
-  constructor(private product: Product, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent, private router: Router, private activatedRoute: ActivatedRoute,private cookieService: CookieService) { }
+  constructor(private product: Product,
+     private searchCriteria: SearchCriteria, 
+     private productService: ProductService, 
+     private cartComponent: CartComponent, 
+     private router: Router, private activatedRoute: ActivatedRoute,
+     private cookieService: CookieService,
+     private addCartService: AddCartService
+    ) { }
 
   ngOnInit() {
     this.searchCriteria.start = 0;
     this.searchCriteria.limit = 10;
-    this.userId = 1;
+    this.userId = Number(this.cookieService.get('userId'));
+    console.log('product======'+this.userId);
     this.userName = 'pandian'
     this.cookieValue = this.cookieService.get('LoggedUser');
+
     this.retrieveAllProducts();
     
   }
@@ -96,7 +109,36 @@ export class SearchproductComponent implements OnInit {
     productInst.user_id = this.userId;
     productInst.created_by = this.userName;
     productInst.status = 'Draft';
+    productInst.content=product.content;
+    productInst.content_type=product.content_type;
     console.log(productInst);
+
+
+
+    if(this.cookieValue=='UNKNOWN'||this.cookieValue==''||this.cookieValue==null)
+    {
+
+      this.addCartService.createLocalStorage(productInst)
+            .subscribe(
+                data => {
+
+                  alert("returned back");
+
+                    // this.alertService.success('Registration successful', true);
+                    // this.router.navigate(['login']);
+                },
+                error => {
+
+                  alert("error occured");
+                    // this.alertService.error(error);
+                    // this.loading = false;
+                });
+                this.productService.cartSubject.next(true);
+
+    }
+
+else
+{
 
     this.productService.addProductInst(productInst).subscribe(data => {
       console.log(data);
@@ -110,6 +152,7 @@ export class SearchproductComponent implements OnInit {
       }
 
     });
+  }
     this.counter = 1;
 
   }

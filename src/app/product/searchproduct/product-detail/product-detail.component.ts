@@ -7,7 +7,7 @@ import { ProductInst } from '../../../model/product_inst';
 import { CartComponent } from '../../cart/cart.component';
 import { HttpResponse, HttpRequest, HttpClient, HttpParams } from '@angular/common/http';
 import { identifierModuleUrl } from "@angular/compiler";
-
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: "app-product-detail",
@@ -28,7 +28,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   userId: number;
   userName: string;
   successMsg: string;
-  constructor(private product:Product,private http: HttpClient, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent,private router: Router,
+  cookieValue = 'UNKNOWN';
+  constructor(private product:Product,private cookieService: CookieService,private http: HttpClient, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent,private router: Router,
     private activatedRoute: ActivatedRoute) { }
    
   ngOnInit() {
@@ -39,7 +40,8 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     console.log(this.activatedRoute.snapshot);
     this.id=this.activatedRoute.snapshot.paramMap.get('id');
      this.productId = this.id;
-    
+     this.userId = Number(this.cookieService.get('userId'));
+     this.cookieValue = this.cookieService.get('LoggedUser');
     console.log('dsjhbfdhjcb--------------'+this.productId);
     this.retrieveProductList();
 

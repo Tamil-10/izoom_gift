@@ -1,3 +1,7 @@
+
+
+<app-header></app-header>
+<!-- <span *ngIf="filterId==4"><app-header></app-header></span> -->
 <div *ngIf="filterId != 4" class="site-wrapper " id="site-wrapper">
   <div class="selection-bar-w absolute top-0-left-0 full-width">
     <div class="selection-bar-w">
@@ -8,12 +12,14 @@
               <li><button type="button" [value]="3" id="startBtn" (click)="valuechange($event.target.value)">Women</button></li>             
               <!-- <li ><app-filter  (filterPrice)='filterPrice($event)'></app-filter></li>  -->
               <li>  <input matInput placeholder="search here" type="text" [(ngModel)]="term"></li> 
+              <li>
+                <app-filter  (filterPrice)='filterPrice($event)'></app-filter>
+              </li> 
+              <li><div class="btn btn-reset" (click)="reset_filter()">Reset</div></li>
             </ul>
            
             <ul class="right hide-on-med-and-down">
-              <li>
-            <app-filter  (filterPrice)='filterPrice($event)'></app-filter>
-          </li> 
+              
           
           </ul>          
             
@@ -36,11 +42,11 @@
 
 <div class="container">
   <button (click)="valuechanged()"></button>
-  <div class="row isotope-grid">
+  <div class="row isotope-grid" >
       <!-- Block2 --> 
        <li *ngFor="let product of (productList | priceFilter:priceMinFilter:priceMaxFilter | paginate: { itemsPerPage: 10, currentPage: p } |filter:term) let i = index" class="forlist">
         
-
+<div *ngIf="product != -1"> 
         
             <!-- <div>{{ product.type | filterBy :2 }}</div> -->
             <!-- <div *ngFor="let a of arr">
@@ -103,6 +109,12 @@ width: 110px;" >Add To Cart</button>
           </div>
          
      </div>
+     
+</div><p *ngIf="product == -1">No results found </p>
+
+     </li>
+    
+    
 <!--      
      <div *ngIf="product == 0 || productList.length == 0">
       No orders found
@@ -114,15 +126,15 @@ width: 110px;" >Add To Cart</button>
   <br><br>
    <pagination-controls class="pagination-controls" (pageChange)="p = $event"></pagination-controls>
   </div>
-  <div id="cart-button">
+  <!-- <div id="cart-button">
     <button style="outline: none;" mat-raised-button color="primary" mat-icon-button id = "cart-button2" [routerLinkActive]="['active']" [routerLink]="['/ordersummary']">          
       <mat-icon>shopping_cart</mat-icon><app-cart></app-cart>
     </button>
-  </div>
-<div class="row">
+  </div> -->
+<!-- <div class="row">
   <div class="form-group col-sm-9">
   </div>
   <div class="form-group col-sm-3">
     <button class="orderbutton" type="button" (click)="proceedToOrderSummary()"><span>Proceed To Order Summary</span></button>
   </div> 
-</div>
+</div> -->

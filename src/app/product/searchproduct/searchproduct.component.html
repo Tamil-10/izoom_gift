@@ -1,5 +1,5 @@
 
-{{cookieValue}}
+
     <div class="row">
       <div class="form-group col-sm-12">
         <div id="errorDiv" class="form-group" style="background-color: #0d5d17;text-align:center">
@@ -38,10 +38,10 @@
                           <input type='button' value='+' (click)="increment(product)" class='qtyplus'>
                           
                         </div>
-                    <button type="button" id="startBtn" *ngIf="cookieValue!='UNKNOWN'"  (click)="addToCart(product)" style="height: 40px;
+                    <button type="button" id="startBtn"   (click)="addToCart(product)" style="height: 40px;
     width: 110px;" >Add To Cart</button>
-    <button type="button" id="startBtn" *ngIf="cookieValue=='UNKNOWN'"  [routerLink]="['/login']" style="height: 40px;
-    width: 110px;" >Add To Cart</button>
+    <!-- <button type="button" id="startBtn" *ngIf="cookieValue=='UNKNOWN'"  [routerLink]="['/login']" style="height: 40px;
+    width: 110px;" >Add To Cart</button> -->
                         
 							</a>
 						</div>
@@ -62,17 +62,17 @@
      
 			 <pagination-controls class="pagination-controls" (pageChange)="p = $event"></pagination-controls>
 			</div>
-      <div id="cart-button">
+      <!-- <div id="cart-button">
         <button style="outline: none;" mat-raised-button color="primary" mat-icon-button id = "cart-button2" [routerLinkActive]="['active']" [routerLink]="['/ordersummary']">          
           <mat-icon>shopping_cart</mat-icon><app-cart></app-cart>
         </button>
       </div>
-  
-    <div class="row">
+   -->
+    <!-- <div class="row">
       <div class="form-group col-sm-9">
       </div>
       <div class="form-group col-sm-3">
         <button class="orderbutton" type="button" (click)="proceedToOrderSummary()"><span>Proceed To Order Summary</span></button>
       </div>
-    </div>
+    </div> -->
 

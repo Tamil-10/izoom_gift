@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NguCarouselModule } from './giftscarousel/carousel/ngu-carousel.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AgGridModule } from 'ag-grid-angular';
 import { NgxStripeModule } from 'ngx-stripe';
 import { AppComponent } from './app.component';
@@ -49,6 +49,39 @@ import {  AuthenticationService } from './service/authentication.service';
 import { AlertService } from './service/alert.service';
 import { AlertComponent } from './_directives/index';
 import { CookieService } from 'ngx-cookie-service';
+import { FacebookSigninService  } from './service/facebook-signin.service';
+import { AddCartService  } from './service/add-cart.service';
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+
+  FacebookLoginProvider,
+} from "angular5-social-login";
+import { ShippingaddressComponent } from './shippingaddress/shippingaddress.component';
+import { EditshippingComponent } from './shippingaddress/editshipping/editshipping.component';
+import { ReceiptComponent } from './shippingaddress/receipt/receipt.component';
+
+import { AddressService } from './service/address.service';
+import { HeaderComponent } from './header/header.component';
+import { AddPostComponent } from './add-post/add-post.component';
+import { AdminComponent } from './admin/admin.component';
+import { ThankyouComponent } from './thankyou/thankyou.component';
+import { AddPostService } from './service/add-post.service';
+import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { fakeBackendProvider } from './_helpers/index';
+
+
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: FacebookLoginProvider.PROVIDER_ID,
+          provider: new FacebookLoginProvider("961711580688174")
+        }
+      ]);
+  // );
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -81,7 +114,16 @@ import { CookieService } from 'ngx-cookie-service';
     QuantityControlComponent,
     CheckoutComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ShippingaddressComponent,
+    EditshippingComponent,
+    ReceiptComponent,
+    HeaderComponent,
+    AddPostComponent,
+    AdminComponent,
+    ThankyouComponent,
+    MyOrdersComponent,
+    
 
   ],
   imports: [
@@ -97,15 +139,34 @@ import { CookieService } from 'ngx-cookie-service';
     HttpClientModule,
     AppRoutingModule,
     Ng2SearchPipeModule,
+    SocialLoginModule,
     AgGridModule.withComponents([]),
     NgMultiSelectDropDownModule.forRoot(),
-    NgxStripeModule.forRoot('***your-stripe-publishable key***')
+    NgxStripeModule.forRoot('***your-stripe-publishable key***'),
   ],
   exports:[
     QuantityControlComponent,
     MaterialModule
   ],
-  providers: [ProductService, UserService,AuthenticationService,AlertService,CookieService ],
+  providers: [ProductService,AddPostService,fakeBackendProvider, UserService,AuthenticationService,AlertService,CookieService,FacebookSigninService,AddressService,AddCartService,
+  
+  {
+    provide: AuthServiceConfig,
+    useFactory: getAuthServiceConfigs
+  }
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+
+
+
+
+export class AppModule {
+
+
+
+ }
+
+
+

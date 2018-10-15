@@ -20,7 +20,7 @@ export class PriceFilterPipe implements PipeTransform {
         return _item.price <= +maxPrice;
       });
     }
-    return  filter_list;
+    return  filter_list.length ? filter_list : [-1];
    
   }
 

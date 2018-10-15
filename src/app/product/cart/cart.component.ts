@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpResponse } from '@angular/common/http';
 import { ProductService } from '../../service/product.service';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
@@ -11,9 +12,9 @@ export class CartComponent implements OnInit {
 
   cartCount: number;
   userId: string;
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private cookieService:CookieService) {
     this.cartCount = 0;
-    this.userId = "1";
+    this.userId = this.cookieService.get('userId');
   }
 
   ngOnInit() {
