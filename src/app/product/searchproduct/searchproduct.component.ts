@@ -77,7 +77,7 @@ export class SearchproductComponent implements OnInit {
     this.searchCriteria.limit = 10;
     this.userId = Number(this.cookieService.get('userId'));
     console.log('product======'+this.userId);
-    this.userName = 'pandian'
+    this.userName = 'Tamil'
     this.cookieValue = this.cookieService.get('LoggedUser');
 
     this.retrieveAllProducts();
@@ -122,18 +122,22 @@ export class SearchproductComponent implements OnInit {
             .subscribe(
                 data => {
 
-                  alert("returned back");
+                //  alert("returned back");
 
                     // this.alertService.success('Registration successful', true);
                     // this.router.navigate(['login']);
                 },
                 error => {
 
-                  alert("error occured");
+                 // alert("error occured");
                     // this.alertService.error(error);
                     // this.loading = false;
                 });
+                this.successMsg = "Product Added Successfully";
                 this.productService.cartSubject.next(true);
+                setTimeout(() => {
+                  this.successMsg = undefined;
+                }, 3000);
 
     }
 

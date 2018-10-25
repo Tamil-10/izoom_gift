@@ -19,12 +19,12 @@ export class AddressService  {
   
     createAddress(address: Address): Observable<HttpEvent<{}>> {
         let formData = new FormData();
-        alert('address----'+this.userId);
+        //alert('address----'+this.userId);
         formData.append('userId',this.userId);
         formData.append('name', address.name);
         formData.append('address', address.address);
         formData.append('contactnumber', address.contactnumber);
-        alert('addressservice -'+address.address+address.contactnumber+address.name);
+       // alert('addressservice -'+address.address+address.contactnumber+address.name);
         const req = new HttpRequest('POST', '/api/address/createAddress', formData, {
             reportProgress: true,
             responseType: 'text'

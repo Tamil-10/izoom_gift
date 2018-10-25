@@ -14,4 +14,5 @@ export class ProductInst {
     file:File; 
     content_type:string;
     content:any;
+    ordered_date: Date;
 }

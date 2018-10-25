@@ -11,6 +11,8 @@ import { CartComponent } from '../../cart/cart.component';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FiltersComponent } from '../../../product/searchproduct/filters/filters.component';
 import { Url } from 'url';
+import { CookieService } from 'ngx-cookie-service';
+import { AddCartService } from '../../../service/add-cart.service';
 
 
 @Component({
@@ -25,13 +27,14 @@ export class WeddinggiftsComponent implements OnInit {
   imgdatapreffix = "data:";
   imgdatasuffix = ";base64,";
   userId: number;
+  cookieValue = 'UNKNOWN';
   userName: string;
   successMsg: string;
   filter: string;
   term:any;
   productType: number;
   public counter : number = 1;   
-  public Count : number;
+  public count : number=1;
     //for price filter
   @Output() refreshShoppingCart = new EventEmitter();
   @Input() priceMinFilter: number | null;
@@ -42,12 +45,15 @@ export class WeddinggiftsComponent implements OnInit {
     this.priceMaxFilter = filter.priceMax;
   }
 
-  constructor(private product: Product, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent, private router: Router, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { 
+  constructor(private product: Product,private cookieService: CookieService,
+    private addCartService: AddCartService, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent, private router: Router, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { 
     this.activatedRoute.queryParams.subscribe(params => {
       console.log('...................' + params);
       console.log(params);      
       this.filterId = params['id'];
       console.log(this.filterId); 
+      this.userId = Number(this.cookieService.get('userId'));
+      this.cookieValue = this.cookieService.get('LoggedUser');
       this.retrieveAllProducts();     
     });
 
@@ -61,18 +67,20 @@ export class WeddinggiftsComponent implements OnInit {
   }
   retrieveAllProducts() {
     console.log('djv------'+this.filterId)
-    this.productService.retrieveProductsByFilter(this.filterId).subscribe(data => {
+    
+    this.productService.retrieveProductsByFilter(this.filterId,this.count).subscribe(data => {
       if (data instanceof HttpResponse ) {
         console.log(data.body);
-        this.productList = JSON.parse('' + data.body);
+        this.productList = JSON.parse('' + data.body)
+      
         console.log(this.productList);       
     }
     });
   }
 
   valuechange(selectedvalue:any){
-  
-    this.productService.retrieveProductsByFilter(this.filterId).subscribe(data => {
+  this.count=2;
+    this.productService.retrieveProductsByFilter(this.filterId,this.count).subscribe(data => {
          if (data instanceof HttpResponse ) {
            console.log(data.body);
            this.productList = JSON.parse('' + data.body).filter((item) => item.gen_type_id == selectedvalue);
@@ -97,7 +105,40 @@ export class WeddinggiftsComponent implements OnInit {
     productInst.user_id = this.userId;
     productInst.created_by = this.userName;
     productInst.status = 'Draft';
+    productInst.content=product.content;
+    productInst.content_type=product.content_type;
     console.log(productInst);
+
+
+
+    if(this.cookieValue=='UNKNOWN'||this.cookieValue==''||this.cookieValue==null)
+    {
+
+      this.addCartService.createLocalStorage(productInst)
+            .subscribe(
+                data => {
+
+                //  alert("returned back");
+
+                    // this.alertService.success('Registration successful', true);
+                    // this.router.navigate(['login']);
+                },
+                error => {
+
+                 // alert("error occured");
+                    // this.alertService.error(error);
+                    // this.loading = false;
+                });
+                this.successMsg = "Product Added Successfully";
+                this.productService.cartSubject.next(true);
+                setTimeout(() => {
+                  this.successMsg = undefined;
+                }, 3000);
+
+    }
+
+else
+{
 
     this.productService.addProductInst(productInst).subscribe(data => {
       console.log(data);
@@ -105,13 +146,15 @@ export class WeddinggiftsComponent implements OnInit {
         this.successMsg = "Product Added Successfully";
         console.log('reload cart');
         this.productService.cartSubject.next(true);
-        setTimeout(() => {          
+        setTimeout(() => {
           this.successMsg = undefined;
         }, 3000);
       }
-     
+
     });
+  }
     this.counter = 1;
+
   }
   reset_filter(){
     this.retrieveAllProducts();   

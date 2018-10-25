@@ -40,14 +40,13 @@ export class AdminComponent implements OnInit {
             data => {
                 
               if (data.type == 4) {
-                  alert('success');
+                  
                   if(data instanceof HttpResponse){
                     console.log('result==='+data.body);    
 
                     if(data.body=='')
                     {
-                        alert("null");  
-                        alert("Incorrect Username/Password");
+                     
                         //location.reload();
                         this.alertService.loginerror();
                 this.loading = false;  
@@ -63,10 +62,10 @@ export class AdminComponent implements OnInit {
                      //   this.cookieService.set('userId', this.userId);
                         this.userId =  this.cookieService.get('userId');
                         console.log(this.userId);
-                        alert('sds---'+ this.admin.email);
+                      
                      //   this.cookieValue = this.cookieService.get('LoggedUser');
 
-                        alert("cookie value."+this.cookieService.get('LoggedUser'));
+                       
                         this.router.navigate(['add-post']);
                     }
                   

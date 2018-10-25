@@ -8,6 +8,7 @@ import { CartComponent } from '../../cart/cart.component';
 import { HttpResponse, HttpRequest, HttpClient, HttpParams } from '@angular/common/http';
 import { identifierModuleUrl } from "@angular/compiler";
 import { CookieService } from 'ngx-cookie-service';
+import { AddCartService } from '../../../service/add-cart.service';
 
 @Component({
   selector: "app-product-detail",
@@ -29,7 +30,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
   userName: string;
   successMsg: string;
   cookieValue = 'UNKNOWN';
-  constructor(private product:Product,private cookieService: CookieService,private http: HttpClient, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent,private router: Router,
+  constructor(private product:Product, private addCartService:AddCartService, private cookieService: CookieService,private http: HttpClient, private searchCriteria: SearchCriteria, private productService: ProductService, private cartComponent: CartComponent,private router: Router,
     private activatedRoute: ActivatedRoute) { }
    
   ngOnInit() {
@@ -76,7 +77,40 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     productInst.user_id = this.userId;
     productInst.created_by = this.userName;
     productInst.status = 'Draft';
+    productInst.content=product.content;
+    productInst.content_type=product.content_type;
     console.log(productInst);
+
+
+
+    if(this.cookieValue=='UNKNOWN'||this.cookieValue==''||this.cookieValue==null)
+    {
+
+      this.addCartService.createLocalStorage(productInst)
+            .subscribe(
+                data => {
+
+                //  alert("returned back");
+
+                    // this.alertService.success('Registration successful', true);
+                    // this.router.navigate(['login']);
+                },
+                error => {
+
+                 // alert("error occured");
+                    // this.alertService.error(error);
+                    // this.loading = false;
+                });
+                this.successMsg = "Product Added Successfully";
+                this.productService.cartSubject.next(true);
+                setTimeout(() => {
+                  this.successMsg = undefined;
+                }, 3000);
+
+    }
+
+else
+{
 
     this.productService.addProductInst(productInst).subscribe(data => {
       console.log(data);
@@ -90,6 +124,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
       }
 
     });
+  }
     this.counter = 1;
 
   }

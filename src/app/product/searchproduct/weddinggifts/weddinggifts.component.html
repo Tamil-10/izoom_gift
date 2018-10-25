@@ -42,7 +42,7 @@
 
 <div class="container">
   <button (click)="valuechanged()"></button>
-  <div class="row isotope-grid" >
+  <div class="row isotope-grid" *ngIf="productList">
       <!-- Block2 --> 
        <li *ngFor="let product of (productList | priceFilter:priceMinFilter:priceMaxFilter | paginate: { itemsPerPage: 10, currentPage: p } |filter:term) let i = index" class="forlist">
         

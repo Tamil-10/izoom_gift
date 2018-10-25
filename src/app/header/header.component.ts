@@ -9,13 +9,14 @@ import { CookieService } from 'ngx-cookie-service';
 export class HeaderComponent implements OnInit {
   cookieValue = 'UNKNOWN';
   socialUser= 'UNKNOWN';
+  isCollapsed = false;
   constructor(private cookieService: CookieService) { }
 
   ngOnInit() {
     this.cookieValue = this.cookieService.get('LoggedUser');
     this.socialUser = this.cookieService.get('socialUser');
 
-   // alert('cookie----'+this.cookieValue);
+   
     if(this.cookieValue=='')
     {
       this.cookieValue = 'UNKNOWN';

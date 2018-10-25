@@ -29,12 +29,12 @@ export class AlertService {
     }
 
     error(keepAfterNavigationChange = false) {
-        alert("error function");
+       // alert("error function");
         this.keepAfterNavigationChange = keepAfterNavigationChange;
         this.subject.next({ text: "Email Id already Exists!" });
     }
     loginerror(keepAfterNavigationChange = false) {
-        alert("loginerror function");
+        //alert("loginerror function");
         this.keepAfterNavigationChange = keepAfterNavigationChange;
         this.subject.next({ type: 'success', text: "Invalid Username/Password.." });
     }

@@ -6,6 +6,17 @@
 @import "~ag-grid/dist/styles/ag-theme-balham.css";
 
 
+
+
+@media screen and (min-width: 510px) {
+  
+   
+}
+@media screen and (max-width: 510px) {
+  .site-wrapper{
+    display: none;
+  }
+}
 #cart-button {
   position:fixed;
   width:60px;
@@ -28,6 +39,11 @@
   margin-top:22px;
 }
 
+@media (max-width: 767px) { 
+  .selection-bar-w{
+
+  }
+}
 
 #myform {
   text-align: center;
@@ -540,7 +556,7 @@ border-radius: 4px;
 
 
 ul, li {
-	margin: 0px;
+	margin: 0px auto;
 	list-style-type: none;
 }
 

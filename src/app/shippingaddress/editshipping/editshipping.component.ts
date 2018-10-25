@@ -34,7 +34,7 @@ export class EditshippingComponent implements OnInit {
       
       console.log(data);
       if (data.type == 4) {
-        alert('success');
+        //alert('success');
         if(data instanceof HttpResponse){
           console.log('result==='+data.body);    
 
@@ -47,7 +47,7 @@ export class EditshippingComponent implements OnInit {
           }
           else{
             console.log('result==='+data.body);    
-           alert('failed');
+           //alert('failed');
           }
         }
     

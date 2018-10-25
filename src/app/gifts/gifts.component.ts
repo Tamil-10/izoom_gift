@@ -54,7 +54,7 @@ export class GiftsComponent implements OnInit {
     this.cookieValue = this.cookieService.get('LoggedUser');
     this.socialUser = this.cookieService.get('socialUser');
 
-    alert('cookie----'+this.cookieValue);
+    
     if(this.cookieValue=='')
     {
       this.cookieValue = 'UNKNOWN';

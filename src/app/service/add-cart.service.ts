@@ -18,7 +18,7 @@ export class AddCartService{
     createLocalStorage(productInst: ProductInst)
     {
 
-        alert("add cart service page");
+       // alert("add cart service page");
 
 
         return this.http.post('/api/users', productInst);
@@ -56,7 +56,7 @@ export class AddCartService{
     deleteLocalStorage(productId: number)
     {
 
-        alert("delete cart service page");
+        //alert("delete cart service page");
 
 
         return this.http.delete('/api/users/' + productId);

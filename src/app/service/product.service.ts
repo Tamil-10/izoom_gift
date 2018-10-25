@@ -47,9 +47,10 @@ export class ProductService {
         return this.http.request(req);
         
     }
-    retrieveProductsByFilter(filterId: string) {
+    retrieveProductsByFilter(filterId: string,count:number) {
         console.log('dkn----'+filterId);
-        const req = new HttpRequest('GET', '/api/product/retrieveProductsByFilter/' + filterId, {
+        console.log('count------'+count);
+        const req = new HttpRequest('GET', '/api/product/retrieveProductsByFilter/' + filterId + '/' + count,{
             reportProgress: true,
             responseType: 'text'
         });
@@ -93,18 +94,18 @@ export class ProductService {
     reloadCart = (orderList) => {
         this.cartListSubject.next(orderList);
     };
-    updateCart(product_id:any, quantity : any): Observable<HttpEvent<{}>> {
-        console.log('dn-----'+product_id+'sad----'+quantity);
-        const req = new HttpRequest('POST', '/api/productinst/updateCart/' + product_id + '/' + quantity, {
+    updateCart(product_id:any, quantity : any, userId): Observable<HttpEvent<{}>> {
+        console.log('dn-----'+product_id+'sad----'+quantity+'dsfjk====='+userId);
+        const req = new HttpRequest('POST', '/api/productinst/updateCart/' + product_id + '/' + quantity + '/' + userId, {
             reportProgress: true,
             responseType: 'text'
         });
         return this.http.request(req);
         //this.cartSubject.next(<CartComponent>{ loaded: true, products: this.Products });
     }      
-    deleteCartItem(product_id:any): Observable<HttpEvent<{}>>{
+    deleteCartItem(product_id:any,userId): Observable<HttpEvent<{}>>{
         console.log('dn-----'+product_id);
-        const req = new HttpRequest('POST', '/api/productinst/deleteCartItem/' + product_id , {
+        const req = new HttpRequest('POST', '/api/productinst/deleteCartItem/' + product_id + '/' + userId , {
             reportProgress: true,
             responseType: 'text'
         });
@@ -122,7 +123,7 @@ export class ProductService {
     }
     
     retrieveOrders(userId:string): Observable<HttpEvent<{}>> {
-        alert('order retrieve '+userId)
+       // alert('order retrieve '+userId)
         
         const req = new HttpRequest('GET', '/api/productinst/retrieveOrders/' + userId, {
             reportProgress: true,

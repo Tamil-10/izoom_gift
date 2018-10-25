@@ -1,14 +1,14 @@
 <div class="header-container">
         
   <div class="row no-margin bg-dark-red sec-header">
-    <div class="col s12">
+    <div class="col s6">
         <ul class="text-left">
             <li  style=" margin-top: 4px;" class="sec-menu-item menu-item"><a [routerLink]="['/gifts']">Home</a></li>
 
                
         </ul>
     </div> 
-    <div class="col s12 text-right">
+    <div class="col s6 text-right">
           <ul>
        
                  
@@ -26,3 +26,55 @@
       </div>
   </div> 
 </div>
+
+
+  <div class="main-header navbar-fixed-top">
+        <div class="header-menu">
+            <div class="header-mobile-nav-wrapper">
+                <button type="button" class="navbar-toggle" [routerLink]="['/']" (click)="collapse = !collapse">
+                    <span class="fa fa-home fa-2x"></span>
+                </button>
+               
+
+            </div>
+            <div class="header-logo-wrapper">
+              <h1>Izoom</h1>
+              <!--   <img class="header-logo-image" src="./assets/imgs/logo.png" alt="Hero"> -->
+            </div>
+          
+            <div class="header-cart-wrapper">
+                <div class="header-cart" style="    width: 100%;" >
+                    <div class="mobil-shopping-cart" style="display: flex">
+                        <span  [routerLink]="['/ordersummary']" style="padding: 5px"><app-cart></app-cart><!-- <i class="fa fa-shopping-cart fa-2x"></i> <span *ngIf="cart_num">( {{cart_num}} )</span> --></span>
+                        <span *ngIf="cookieValue=='UNKNOWN' " [routerLink]="['/login']" style="font-size: 19px;padding: .2em;">login</span>
+                        <!-- <span  *ngIf="cookieValue!='UNKNOWN' " [routerLink]="['/my-orders']"  style="font-size: 19px;padding: .4em;"><i class="fa fa-list" > </i></span> -->
+                        <span *ngIf="cookieValue!='UNKNOWN' " [routerLink]="['/login']" style="padding: 5px"><i class="fa fa-sign-out fa-2x"></i> </span>
+                    </div>
+                  
+                   
+                   <!--  <div class="header-cart-item">
+                        <a href="">MY CART <span *ngIf="cart_num">( {{cart_num}} )</span><span class="fa fa-caret-down"></span></a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- <ul class="mobile-header-nav" *ngIf="collapse" (click)="collapse = !collapse">
+            <div class="container">
+            <li>
+                <a routerLink="/">HOME</a>
+            </li>
+            <li>
+                <a routerLink="/">SHOP</a>
+            </li>
+            <li>
+                <a routerLink="/">JOURNAL</a>
+            </li>
+            <li>
+                <a routerLink="/">MORE</a>
+            </li>
+            </div>
+        </ul> -->
+        
+    </div>
+
+   

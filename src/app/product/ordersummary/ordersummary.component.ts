@@ -26,17 +26,19 @@ export class OrdersummaryComponent extends CartBaseComponent implements OnInit {
   imgdatasuffix = ";base64,";
   total = 0;
   cookieValue = 'UNKNOWN';
+  totalPrice:number = 0;
   @Output() refreshShoppingCart = new EventEmitter();
   constructor(private product:ProductInst, protected productService: ProductService,private addCartService: AddCartService, private cartComponent: CartComponent,  private router: Router, private activatedRoute: ActivatedRoute, private cookieService: CookieService) {    
     super(productService);
-    this.userId = this.cookieService.get('userId');
-    this.cookieValue = this.cookieService.get('LoggedUser');
-    console.log('userid'+this.userId);
-   
+  
   }
 
   ngOnInit() {
     this.userName = 'pandian'
+    this.userId = this.cookieService.get('userId');
+    
+    this.cookieValue = this.cookieService.get('LoggedUser');
+  
     this.getOrderSummary();    
     
   }
@@ -52,67 +54,20 @@ export class OrdersummaryComponent extends CartBaseComponent implements OnInit {
   if(this.cookieValue=='UNKNOWN'||this.cookieValue==''||this.cookieValue==null)
   {
 
-    this.orderList= JSON.parse(localStorage.getItem('cart'));
-    this.totalPrice = 0;
-    for(let product of this.orderList) {               
-                  this.totalPrice += product.price * product.quantity;
-                  
-              }
-
-
-    // //alert("product id="+JSON.parse(localStorage.getItem('cart.product_id')));
-    // for(let order of this.orderList) {
-    //   console.log("local data.."+order.price);
-
-    //   this.addCartService.getContent(order.product_id)
-    //   .subscribe(
-    //       data => {
-    //         if (data instanceof HttpResponse ) {
-    //           this.product = JSON.parse('' + data.body);
-    //           console.log('product'+this.product.content);
-    //           //console.log(this.orderList);
-    //           this.totalPrice = 0;
-
-    //           // this.orderList.forEach(element => {
-    //           //   console.log("element---"+element);
-    //           //   this.totalPrice = element.price * element.quantity;
-    //           // });
-
-    //           // let product=null;
-    //           // product.quantity=this.orderList.quantity;
-    //           // product.price=this.orderList.price;
-    //           // product.content=this.orderList.content;
-    //           // product.content_type=this.orderList.content_type;
-
-    //         //   for(let product of this.orderList) {
-    //         //     product.quantity=order.quantity;
-
-    //         //     this.totalPrice += product.price * product.quantity;
-                
-    //         // }
-
-    //           this.contentList = JSON.parse('' + data.body);
-    //        this.product.content_type=this.contentList.content_type;
-    //         this.product.content=this.contentList.content;
-    //         console.log("returned back"+this.product.content);
-            
-          
-          
-    //       }
-    //       },
-    //       error => {
+    
   
-    //     //    alert("error occured");
-    //           // this.alertService.error(error);
-    //           // this.loading = false;
-    //       });
-
-      
-
-
-      //this.totalPrice += product.price * product.quantity;
-      
-
+    if("cart" in localStorage){ 
+      this.orderList= JSON.parse(localStorage.getItem('cart'));
+      this.totalPrice = 0;
+      for(let product of this.orderList) {               
+        this.totalPrice += product.price * product.quantity;
+        
+    }
+    }
+     else{  
+console.log('no');
+     }
+  
   }
 
   
@@ -125,6 +80,7 @@ export class OrdersummaryComponent extends CartBaseComponent implements OnInit {
         //console.log(data.body);
         this.orderList = JSON.parse('' + data.body);
         //console.log(this.orderList);
+        
         this.totalPrice = 0;
         // this.orderList.forEach(element => {
         //   console.log("element---"+element);
@@ -154,7 +110,7 @@ changeQuantity = (product,quantity) => {
   {
  
     let productInst = new ProductInst();
-    alert('quantity+'+quantity);
+   // alert('quantity+'+quantity);
     productInst.quantity = quantity;
     productInst.price = product.price;
     productInst.product_id = product.product_id;
@@ -170,18 +126,20 @@ changeQuantity = (product,quantity) => {
     .subscribe(
         data => {
 
-          alert("returned back");
+          //alert("returned back");
 
             // this.alertService.success('Registration successful', true);
             // this.router.navigate(['login']);
         },
         error => {
 
-          alert("error occured");
+         // alert("error occured");
             // this.alertService.error(error);
             // this.loading = false;
         });
         this.getOrderSummary();  
+        this.productService.cartSubject.next(true);
+
   }
   else{
      product.quantity = quantity;   
@@ -189,7 +147,8 @@ changeQuantity = (product,quantity) => {
      console.log("--gfh--"+quantity);
      console.log("-sd----"+product.quantity);
      console.log('ks--sa---'+product.product_id);
-      this.productService.updateCart(product.product_id,quantity).subscribe(k =>{
+     console.log('userId'+this.userId);
+      this.productService.updateCart(product.product_id,quantity,this.userId).subscribe(k =>{
         if (k.type == 4) {
           console.log('reload cart');
           
@@ -211,24 +170,27 @@ removeFromCart(index){
   .subscribe(
       data => {
         
-        alert("deleted");
+        
 
           // this.alertService.success('Registration successful', true);
           // this.router.navigate(['login']);
       },
       error => {
         
-        alert("error occured");
+        
           // this.alertService.error(error);
           // this.loading = false;
       });
       this.orderList.splice(index, 1);   
       this.getOrderSummary();  
+      this.productService.cartSubject.next(true);
+
   }
 else{
   console.log('sd----------'+index);
   console.log('sd----------'+this.orderList[index].product_id);  
-  this.productService.deleteCartItem(this.orderList[index].product_id).subscribe(k =>{
+  console.log('userId'+this.userId);
+  this.productService.deleteCartItem(this.orderList[index].product_id, this.userId).subscribe(k =>{
     if (k.type == 4) { 
       console.log('item deleted');
       this.productService.cartSubject.next(true);

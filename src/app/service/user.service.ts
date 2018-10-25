@@ -17,7 +17,7 @@ export class UserService {
     }
 
     create(user: User):Observable<HttpEvent<{}>> {
-        alert("user service page "+user.username);
+        //alert("user service page "+user.username);
 
         let formData = new FormData();
         formData.append('username', user.username);
@@ -40,7 +40,7 @@ export class UserService {
         console.log('User service page');
 
 
-        alert('createsocial'+email+'and '+name);
+        //alert('createsocial'+email+'and '+name);
 
         let formData = new FormData();
         formData.append('username', email);
@@ -60,7 +60,7 @@ export class UserService {
         console.log('User service page');
 
 
-        alert('createsocial'+email+'and '+name);
+        //alert('createsocial'+email+'and '+name);
 
         let formData = new FormData();
         formData.append('username', email);

@@ -108,7 +108,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
             // delete user
             if (request.url.match(/\/api\/users\/\d+$/) && request.method === 'DELETE') {
-                alert('fack-backend delete');
+                
                 let urlParts = request.url.split('/');
                 let id = parseInt(urlParts[urlParts.length - 1]);
                 

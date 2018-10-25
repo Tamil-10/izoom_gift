@@ -12,17 +12,20 @@ export class CartComponent implements OnInit {
 
   cartCount: number;
   userId: string;
+  orderList:any;
+
   constructor(private productService: ProductService, private cookieService:CookieService) {
-    this.cartCount = 0;
-    this.userId = this.cookieService.get('userId');
+  
+    
   }
 
   ngOnInit() {
-
+    this.cartCount = 0;
+    this.userId = this.cookieService.get('userId');
     this.productService.cartSubject.subscribe(
 
       (flag: boolean) => {
-        console.log('flag:' + flag);
+        //console.log('flag:' + flag);
         if (flag = true) {
           this.getCartCount();
         }
@@ -36,7 +39,22 @@ export class CartComponent implements OnInit {
   }
 
   public getCartCount() {
-    console.log('getCartCount');
+    if(this.userId=='1'){
+     //console.log('getCartCount');
+       
+      if("cart" in localStorage){       
+        this.orderList= JSON.parse(localStorage.getItem('cart'));
+        this.cartCount=0;   
+      for(let product of this.orderList) {   
+         
+        this.cartCount += product.quantity;        
+    }
+      }else{
+        console.log('orderList empty');
+  }
+    }
+    else{
+    //console.log('getCartCount');
     this.productService.getCartCount(this.userId).subscribe(data => {
       console.log(data);
       if (data instanceof HttpResponse ) {
@@ -44,6 +62,7 @@ export class CartComponent implements OnInit {
         this.cartCount = JSON.parse('' + data.body);
       }
     });
+  }
   }
 
 }

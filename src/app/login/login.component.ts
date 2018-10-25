@@ -108,12 +108,11 @@ export class LoginComponent implements OnInit {
         // console.log('connected');
         this.fbGraphApi();
 
-        alert("callback"+response.email);
+      
 
         this.model.email=response.email;
          //Insert user details from Logged Facebook user
 
-          alert("you can add details");
 
           this.loading = true;
           this.userService.createSocial(response.email,response.name)
@@ -126,14 +125,14 @@ export class LoginComponent implements OnInit {
                             if(data.body=="success")
                             {
 
-                              alert("return success 1");
+                              
                               console.log("return success 1");
 //                              this.router.navigate(['/']);
 
                             }
                             else{
 
-                              alert("return failure 1");
+                              
                               console.log("return failure 1");
 
 
@@ -143,7 +142,7 @@ export class LoginComponent implements OnInit {
                               
                               socialname= (<HTMLInputElement>document.getElementById('name')).value;
                               socialemail=(<HTMLInputElement>document.getElementById('email')).value;
-                     alert("social name "+socialemail);
+                     
         
         
                               // function call to userService
@@ -190,7 +189,7 @@ export class LoginComponent implements OnInit {
                     },
                     error => {
 
-                      alert("error occured");
+                      
                       console.log("error occured");
 
                       var socialname=null;
@@ -198,7 +197,7 @@ export class LoginComponent implements OnInit {
                       
                       socialname= (<HTMLInputElement>document.getElementById('name')).value;
                       socialemail=(<HTMLInputElement>document.getElementById('email')).value;
-             alert("social name "+socialemail);
+             
 
 
                       // function call to userService
@@ -271,7 +270,7 @@ export class LoginComponent implements OnInit {
         if (!response || response.error) {
             console.log('Error occured');
         } else {
-            alert('fbGraphApi called ');
+            
           //  this.router.navigate(['/']);
        
           (<HTMLInputElement>document.getElementById('email')).value= response.email;
@@ -311,14 +310,13 @@ export class LoginComponent implements OnInit {
                 data => {
                     
                   if (data.type == 4) {
-                      alert('success');
+                      
                       if(data instanceof HttpResponse){
                         console.log('result==='+data.body);    
 
                         if(data.body=='')
                         {
-                            alert("null");  
-                            alert("Incorrect Username/Password");
+                         
                             //location.reload();
                             this.alertService.loginerror();
                     this.loading = false;  
@@ -327,8 +325,8 @@ export class LoginComponent implements OnInit {
                         else{
                             this.user = JSON.parse('' + data.body);
                             console.log('userId'+this.user.id);
-                            console.log('userName'+this.user.email);
-                            this.cookieService.set( 'LoggedUser', this.user.email );     
+                            console.log('userName'+this.user.username);
+                            this.cookieService.set( 'LoggedUser', this.user.username );     
                             this.userId = String(this.user.id); 
                             console.log('userIddddddddddddddd'+this.userId);
                             this.cookieService.set('userId', this.userId);
@@ -336,10 +334,11 @@ export class LoginComponent implements OnInit {
                             console.log(this.userId);
                             
                             this.cookieValue = this.cookieService.get('LoggedUser');
-                            if(JSON.parse(localStorage.getItem('cart'))!= 0||JSON.parse(localStorage.getItem('cart'))!=null||JSON.parse(localStorage.getItem('cart'))!=''){
-                            this.orderList= JSON.parse(localStorage.getItem('cart'));
-                            if(this.orderList!= 0 ||this.orderList!= null|| this.orderList!= ''){
-                            for(var i=0;i< this.orderList.length;i++)
+                           
+                               
+                            if("cart" in localStorage){       
+                              this.orderList= JSON.parse(localStorage.getItem('cart'));      
+                              for(var i=0;i< this.orderList.length;i++)
                             {
                             let productInst = new ProductInst();
                             productInst.quantity = this.orderList[i].quantity;
@@ -352,18 +351,22 @@ export class LoginComponent implements OnInit {
                             this.productService.addProductInst(productInst).subscribe(data => {
                               console.log(data);
                               if (data.type == 4) {
-                                alert('success');
+                                
                                 console.log('reload cart');
-                               // this.productService.cartSubject.next(true);                                
+                                this.productService.cartSubject.next(true);                                
                               }
                         
                             });
                           }
-                        }
+                            }
+                            else{  
+                              console.log('orderList empty') ;             
+                            
+                        
                       }
                           localStorage.removeItem('cart');
 
-                            alert("cookie value."+this.cookieService.get('LoggedUser'));
+                           
                             this.router.navigate([this.returnUrl]);
                         }
                       
