@@ -132,6 +132,17 @@ export class ProductService {
         return this.http.request(req);
         
     }
+    retrieveAdminOrders(): Observable<HttpEvent<{}>> {
+        // alert('order retrieve '+userId)
+         console.log('admin service');
+         const req = new HttpRequest('GET', '/api/productinst/retrieveAdminOrders/', {
+             reportProgress: true,
+             responseType: 'text'
+         });
+         return this.http.request(req);
+         
+     }
+    
   
    
 }

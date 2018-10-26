@@ -1,8 +1,60 @@
 
 
 <app-header></app-header>
+
+
+<div class="header-meta d-flex clearfix justify-content-end">
+    <!-- Search Area -->
+    <!-- <app-filter  (filterPrice)='filterPrice($event)'></app-filter> -->
+    <div class="search-area" style="width: 30%">
+        <form >
+            <input matInput placeholder="Search Here" id="headerSearch" name="term" type="search" [(ngModel)]="term" >
+            <!-- <input type="search" name="search" id="headerSearch" placeholder="Type for search"> -->
+            <button type="submit">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </form>
+    </div>
+    <!-- Favourite Area -->
+    <div class="favourite-area">
+        <a >
+          <button type="button" [value]="1" id="startBtn" (click)="valuechange($event.target.value)">Kids</button>
+        </a>
+    </div>
+    <!-- User Login Info -->
+    <div class="user-login-info">
+        <a >
+          <button type="button" [value]="2" id="startBtn" (click)="valuechange($event.target.value)" >Men</button>
+        </a>
+    </div>
+    <!-- Cart Area -->
+    <div class="cart-area">
+        <a  id="essenceCartBtn">
+          <button  type="button" [value]="3" id="startBtn" (click)="valuechange($event.target.value)">Women</button>
+            <!-- <span *ngIf="items.length > 0">{{items.length}}</span> -->
+        </a>
+    </div>
+    
+        <div class="cart-area" style="padding: 0 0 0 11px">
+            <a  id="essenceCartBtn">
+              <button style="background: aliceblue;" type="button"  id="startBtn"  (click)="reset_filter()">Reset</button>
+                <!-- <span *ngIf="items.length > 0">{{items.length}}</span> -->
+            </a>
+          </div>
+    
+</div>
+
+
 <!-- <span *ngIf="filterId==4"><app-header></app-header></span> -->
 <div *ngIf="filterId != 4" class="site-wrapper " id="site-wrapper">
+
+
+
+
+
+
+
+  
   <div class="selection-bar-w absolute top-0-left-0 full-width">
     <div class="selection-bar-w">
         <div class="selection-bar selection-bar-static row no-margin">
@@ -11,7 +63,7 @@
               <li><button type="button" [value]="2" id="startBtn" (click)="valuechange($event.target.value)" >Men</button></li>
               <li><button type="button" [value]="3" id="startBtn" (click)="valuechange($event.target.value)">Women</button></li>             
               <!-- <li ><app-filter  (filterPrice)='filterPrice($event)'></app-filter></li>  -->
-              <li>  <input matInput placeholder="search here" type="text" [(ngModel)]="term"></li> 
+              <li>  <input matInput placeholder="search here" type="text" [(ngModel)]="term" ></li> 
               <li>
                 <app-filter  (filterPrice)='filterPrice($event)'></app-filter>
               </li> 
@@ -54,7 +106,7 @@
                  <b>{{number}}</b>
               </a>
           </div> -->
-             
+          
           <!-- <div *ngIf="product! == -1"> -->
         <div class="block2-pic hov-img0" >
           
@@ -124,8 +176,9 @@ width: 110px;" >Add To Cart</button>
   </div>
   <!-- <div *ngIf="productList?.length==0"><p>no products</p></div> -->
   <br><br>
-   <pagination-controls class="pagination-controls" (pageChange)="p = $event"></pagination-controls>
+   
   </div>
+  <pagination-controls class="pagination-controls" (pageChange)="p = $event"></pagination-controls>
   <!-- <div id="cart-button">
     <button style="outline: none;" mat-raised-button color="primary" mat-icon-button id = "cart-button2" [routerLinkActive]="['active']" [routerLink]="['/ordersummary']">          
       <mat-icon>shopping_cart</mat-icon><app-cart></app-cart>

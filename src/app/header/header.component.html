@@ -3,8 +3,10 @@
   <div class="row no-margin bg-dark-red sec-header">
     <div class="col s6">
         <ul class="text-left">
+                <li *ngIf="cookieValue=='izoomstudios@gmail.com' " style=" margin-top: 4px;" class="sec-menu-item menu-item"><a [routerLink]="['/manageproductconfig']">Manage Product</a></li>
+          <li *ngIf="cookieValue=='izoomstudios@gmail.com' " style=" margin-top: 4px;" class="sec-menu-item menu-item"><a [routerLink]="['/productconfig']">Add Product</a></li>
             <li  style=" margin-top: 4px;" class="sec-menu-item menu-item"><a [routerLink]="['/gifts']">Home</a></li>
-
+           
                
         </ul>
     </div> 
@@ -18,10 +20,10 @@
                   <!-- <li *ngIf="cookieValue=='UNKNOWN'&& socialUser=='UNKNOWN'"  class="sec-menu-item"><a [routerLink]="['/login']">Login</a></li> -->
                   
                   <li *ngIf="cookieValue!='UNKNOWN' "  class="sec-menu-item"><a [routerLink]="['/login']">Logout</a></li>
-                  <li *ngIf="cookieValue!='UNKNOWN' "  class="sec-menu-item "><a [routerLink]="['/my-orders']"><i class="fa fa-list" >      
+                  <li *ngIf="cookieValue!='UNKNOWN' && cookieValue!='izoomstudios@gmail.com' "  class="sec-menu-item "><a [routerLink]="['/my-orders']"><i class="fa fa-list" >      
                 </i>Orders</a></li>
                 <!-- *ngIf="cookieValue!='UNKNOWN' " -->
-                  <li   class="sec-menu-item">  <a  [routerLinkActive]="['active']" [routerLink]="['/ordersummary']"><app-cart></app-cart> </a> </li>
+                  <li   *ngIf="cookieValue!='izoomstudios@gmail.com'"class="sec-menu-item">  <a  [routerLinkActive]="['active']" [routerLink]="['/ordersummary']"><app-cart></app-cart> </a> </li>
           </ul>
       </div>
   </div> 
@@ -45,8 +47,8 @@
             <div class="header-cart-wrapper">
                 <div class="header-cart" style="    width: 100%;" >
                     <div class="mobil-shopping-cart" style="display: flex">
-                        <span  [routerLink]="['/ordersummary']" style="padding: 5px"><app-cart></app-cart><!-- <i class="fa fa-shopping-cart fa-2x"></i> <span *ngIf="cart_num">( {{cart_num}} )</span> --></span>
-                        <span *ngIf="cookieValue=='UNKNOWN' " [routerLink]="['/login']" style="font-size: 19px;padding: .2em;">login</span>
+                        <span  [routerLink]="['/ordersummary']" style="padding: 3px"><app-cart></app-cart><!-- <i class="fa fa-shopping-cart fa-2x"></i> <span *ngIf="cart_num">( {{cart_num}} )</span> --></span>
+                        <span *ngIf="cookieValue=='UNKNOWN' " [routerLink]="['/login']" style="font-size: 19px;padding: 7px;">login</span>
                         <!-- <span  *ngIf="cookieValue!='UNKNOWN' " [routerLink]="['/my-orders']"  style="font-size: 19px;padding: .4em;"><i class="fa fa-list" > </i></span> -->
                         <span *ngIf="cookieValue!='UNKNOWN' " [routerLink]="['/login']" style="padding: 5px"><i class="fa fa-sign-out fa-2x"></i> </span>
                     </div>

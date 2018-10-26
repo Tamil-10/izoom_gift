@@ -1,8 +1,27 @@
-#alert-msg{
-    left: 35%;
-    top: 90px;
-    width: 30%;
-    background-color: #f2dede;
-    border-color: #ebccd1;
-    position: relative;
-}
+
+
+@media screen and (min-width: 510px) {
+    #alert-msg{
+        left: 37%;
+        top: 44px;
+        width: 26%;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+        position: absolute;
+        text-align: -webkit-center;
+
+    }
+     
+  }
+  @media screen and (max-width: 510px) {
+    #alert-msg{
+        left: 10%;
+        top: 74px;
+        width: 80%;
+        background-color: #f2dede;
+        border-color: #ebccd1;
+        position: absolute;
+        text-align: -webkit-center;
+
+    }
+  }

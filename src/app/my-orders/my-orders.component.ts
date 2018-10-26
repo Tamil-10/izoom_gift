@@ -26,7 +26,16 @@ export class MyOrdersComponent implements OnInit {
 
   
   retrieveOrders() {
-   
+  //  if(this.cookieValue = 'izoomstudios@gmail.com'){
+  //   console.log('admin');
+  //   this.productService.retrieveAdminOrders().subscribe(data => {
+  //     if (data instanceof HttpResponse ) {
+  //       console.log('sdf---'+data.body);
+  //       this.orderList = JSON.parse('' + data.body);
+  //     }
+  //   });
+  //  }else{
+     
       this.productService.retrieveOrders(this.userId).subscribe(data => {
         if (data instanceof HttpResponse ) {
           console.log('sdf---'+data.body);
@@ -36,4 +45,4 @@ export class MyOrdersComponent implements OnInit {
       
       
     }
-}
+  }

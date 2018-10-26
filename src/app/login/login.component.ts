@@ -353,12 +353,14 @@ export class LoginComponent implements OnInit {
                               if (data.type == 4) {
                                 
                                 console.log('reload cart');
-                                this.productService.cartSubject.next(true);                                
+                                                           
                               }
                         
                             });
                           }
+                          this.productService.cartSubject.next(true);
                             }
+
                             else{  
                               console.log('orderList empty') ;             
                             
@@ -368,6 +370,7 @@ export class LoginComponent implements OnInit {
 
                            
                             this.router.navigate([this.returnUrl]);
+                           
                         }
                       
 
