@@ -32,7 +32,13 @@ export class UserService {
         });
        return this.http.request(req);
     }   
-
+    createFb():Observable<HttpEvent<{}>>{
+        const req = new HttpRequest('POST', '/api/user/createFb', {
+            reportProgress: true,
+            responseType: 'text'
+        });
+        return this.http.request(req);
+    }
     createSocialUser(email:string,name:string):Observable<HttpEvent<{}>>
     {
 

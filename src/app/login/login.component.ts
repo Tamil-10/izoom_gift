@@ -80,6 +80,26 @@ export class LoginComponent implements OnInit {
 
 
      //Facebook Login Functions
+     open(){
+       alert('cilcked');
+       this.userService.createFb()
+       .subscribe(
+           data => {
+
+           if (data.type == 4) {
+                   if(data instanceof HttpResponse){
+
+                     if(data.body=="success")
+                     {
+                      console.log("return success 1");
+                     }
+                     else{
+                      console.log("return failure 1");
+                     }
+     }
+    }
+    });
+  }
 
      openPopup() {
 
@@ -96,7 +116,9 @@ export class LoginComponent implements OnInit {
           // console.log('Get Login Response:: ', response);
           this._statusChangedCallback(response);
         }.bind(this), {
+         
           scope: this.scope,
+          
           auth_type: 'reauthenticate'
         });
     }
