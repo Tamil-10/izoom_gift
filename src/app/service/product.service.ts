@@ -132,6 +132,16 @@ export class ProductService {
         return this.http.request(req);
         
     }
+    retrieveOrdersbyId(orderId:string): Observable<HttpEvent<{}>> {
+        // alert('order retrieve '+userId)
+         
+         const req = new HttpRequest('GET', '/api/productinst/retrieveOrdersById/' + orderId, {
+             reportProgress: true,
+             responseType: 'text'
+         });
+         return this.http.request(req);
+         
+     }
     retrieveAdminOrders(): Observable<HttpEvent<{}>> {
         // alert('order retrieve '+userId)
          console.log('admin service');
@@ -142,7 +152,16 @@ export class ProductService {
          return this.http.request(req);
          
      }
-    
+     updateStatus(orderid:number[], status:string): Observable<HttpEvent<{}>> {
+         alert('order retrieve '+orderid+status);
+         
+         const req = new HttpRequest('POST', '/api/productinst/updateStatus/' + orderid + '/' + status , {
+             reportProgress: true,
+             responseType: 'text'
+         });
+         return this.http.request(req);
+         
+     }
   
    
 }

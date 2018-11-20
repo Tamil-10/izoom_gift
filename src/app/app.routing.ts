@@ -25,6 +25,8 @@ import { AddPostComponent } from './add-post/add-post.component';
 import { AdminComponent } from './admin/admin.component';
 import { ThankyouComponent } from './thankyou/thankyou.component';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
+import { TimeLineComponent } from './time-line/time-line.component';
+import { VideoComponent } from './video/video.component';
 
 const appRoutes: Routes = [
   { path: '', redirectTo: '/gifts', pathMatch: 'full' },
@@ -52,10 +54,11 @@ const appRoutes: Routes = [
   { path : 'header', component: HeaderComponent},
   { path : 'admin', component: AdminComponent},
   { path : 'add-post', component: AddPostComponent},
+  { path : 'time-line', component: TimeLineComponent},
   { path : 'thankyou', component: ThankyouComponent},
-  { path : 'my-orders', component : MyOrdersComponent}
-  
-      
+  { path : 'my-orders', component : MyOrdersComponent},
+  { path : 'video/:id', component: VideoComponent},
+  { path : 'video', component: VideoComponent}
 
 
 

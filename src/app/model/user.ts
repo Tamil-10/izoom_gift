@@ -6,4 +6,6 @@
     lastName: string;
     email: string;
     name: string;
+    youtube_link:string;
+    
 }

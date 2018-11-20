@@ -1,16 +1,60 @@
 <app-header></app-header> 
-<div class="container cont">
-	<div class="row">
-		<div id="albums" class="col-sm-12">
-			<p class="Latest">Orders</p>
-	</div>
-	</div>
-	</div>
-		<!-- <c:if test="${size == 0}"> -->
-			<h2 *ngIf="orderList?.length < 1" class="text-center" id="txxt" >No Previous Orders...</h2>
-		<!-- </c:if> -->
+
+
+<div class="container cont"  *ngIf="orderList?.length > 1 &&  cookieValue != 'UNKNOWN'" >
+		<div class="row">
+				<div id="albums" class="col-sm-8">
+				<p class="Latest">Orders</p>
+		</div>
+		<div id="albums" class="col-sm-4">
+	    <form class="orderSearch">
+	          <input type="text" placeholder="Search your product here.." name="serial"  [(ngModel)]="term" />
+				
+			</form> 
+			</div>
 	
-		<table  *ngIf="orderList?.length > 0" class="responstable">
+		</div> 	
+	
+</div>
+
+
+	  <div class="container cont" *ngIf="orderList?.length < 1 && cookieValue=='UNKNOWN' "  >
+		
+		<div class="row">
+				<div id="albums" class="col-sm-8">
+				<p class="Latest">Orders</p>
+		</div>
+	
+			  <div  id="albums"  class="col-sm-4">
+				<div class="input-group orderSearch">
+				
+					
+					<input  type="number" (input)="tcode=$event.target.value" name="tcode" placeholder="Enter your order id.." 
+						 class="form-control" required />
+						<div class="input-group-btn" style="padding: 5px 0 0 0;">
+						<button class="btn btn-success" (click)="submit()">Submit</button>
+					</div>
+					</div>
+					<!-- <div class="input-group-btn">
+					<button (click)="submit()" class="btn btn-primary" type="submit">
+					  <span class="glyphicon glyphicon-search"></span>submit
+					</button>
+				  </div> -->
+				
+			  </div>
+		
+	</div>
+	</div>
+	
+
+
+		<!-- <c:if test="${size == 0}"> -->
+			<h2 *ngIf="orderList?.length < 1 " class="text-center" id="txxt" >No Orders...</h2>
+		<!-- </c:if> -->
+		
+		
+
+		<table  *ngIf="orderList?.length > 0 &&  cookieValue!='izoomstudios@gmail.com' " class="responstable">
 			<tr>
 				<th align="center">S.No</th>
 				<th>Product</th>
@@ -20,7 +64,7 @@
 				<th class="text-center">Status</th>
 			</tr>
 		
-				<tr *ngFor="let order of orderList; let i = index;" style="margin-top: 5px; margin-center: 20px!important"
+				<tr *ngFor="let order of orderList | filter:term; let i = index;" style="margin-top: 5px; margin-center: 20px!important"
 					class="item-row">
 					<td>{{ i + 1}}</td>
 					<td style="text-align: center;">{{order.name}}</td>
@@ -41,3 +85,92 @@
 				</tr>
 		
 		</table>
+
+		<!-- <div >
+			<div class="input-group orderSearch" style="padding-top: 7px;">
+		
+						<div *ngFor="let status of stausValues"  >
+								
+								<input type="radio" [value]="status.name" 
+								(change)="selectedstatustValue(status.name)" [(ngModel)]="status.isSelected"   [ngModelOptions]="{standalone: true}">
+								{{status.name}}
+							
+								
+							</div>
+								
+ <button  class="btn btn-success" type="submit" (click)="changeStatus()" >Submit </button> 
+				<button (click)="changeStatus()" class="btn btn-sumit" type="submit">
+					submit
+				</button>
+				</div>
+	
+			</div> -->
+			
+		<table  *ngIf="orderList?.length > 0 && cookieValue=='izoomstudios@gmail.com' " class="responstable">
+				<tr>
+					
+					<th class="text-center" *ngFor="let status of stausValues">	<input type="radio" [value]="status.name" 
+						(change)="selectedstatustValue(status.name)" [(ngModel)]="status.isSelected"   [ngModelOptions]="{standalone: true}">
+						{{status.name}}</th>
+					
+					<th class="text-center">
+				<button (click)="changeStatus()" class="btn btn-sumit" type="submit">submit
+</button>
+				</th>
+			</tr>
+
+			
+			<tr >
+			
+			<td style="text-align: center;"></td>
+
+
+		</tr>
+
+			
+			</table>
+	
+		<table  *ngIf="orderList?.length > 0 && cookieValue=='izoomstudios@gmail.com' " class="responstable">
+			<tr>
+				<th align="center">S.No</th>
+				<th>Order Id</th>
+				<th>Product</th>
+				<th class="text-center">Quantity</th>
+				<th class="text-center">Price</th>
+				<th class="text-center">SubTotal</th>
+				<th class="text-center">Status</th>
+			</tr>
+		
+				<tr *ngFor="let order of orderList | filter:term; let i = index;" style="margin-top: 5px; margin-center: 20px!important"
+					class="item-row">
+					<td><input type="checkbox"  [value]="order.id" [(ngModel)]="order.isSelected"  
+						 [ngModelOptions]="{standalone: true}" required >&nbsp;{{ i + 1}}</td>
+					<td>{{order.order_id}}</td>
+					<td style="text-align: center;">{{order.name}}</td>
+					<td style="text-align: center;">{{order.quantity}}</td>				
+					<td style="text-align: center;">&#8377;{{order.price}}</td>
+					<td style="text-align: center;">&#8377;{{order.price * order.quantity}}</td>
+					<td style="text-align: center;">{{order.status}}</td>
+					<!-- <c:if test="${cartitem.days<=0}">
+						<td style="text-align: center; color:#06e20a;">Delivered</td>
+					</c:if>
+					<c:if test="${cartitem.days>=3}">
+						<td style="text-align: center; color:#06e20a;">Shipped</td>
+					</c:if>
+					<c:if test="${cartitem.days>=1 && cartitem.days<=2}">
+						<td style="text-align: center; color:#3e0cf4;">In Transit</td>
+					</c:if> -->
+
+				</tr>
+		
+		</table>
+
+
+
+		+918870460665
+<button><a href="https://web.whatsapp.com/send?phone=+918870460665&amp;text=Hi, I would like to get more information..">
+	I am interested</a></button>
+
+<button><a href="intent://send/+918870460665#Intent;scheme=smsto;package=web.whatsapp;action=android.intent.action.SENDTO;end">
+	Send Message</a></button>
+

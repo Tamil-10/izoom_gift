@@ -69,7 +69,10 @@ import { ThankyouComponent } from './thankyou/thankyou.component';
 import { AddPostService } from './service/add-post.service';
 import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { fakeBackendProvider } from './_helpers/index';
-
+import { TimeLineComponent } from './time-line/time-line.component';
+import { YoutubePlayerModule } from 'ngx-youtube-player';
+import { VideoComponent } from './video/video.component';
+import { SafePipe } from './video/safe.pipe';
 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
@@ -123,8 +126,9 @@ export function getAuthServiceConfigs() {
     AdminComponent,
     ThankyouComponent,
     MyOrdersComponent,
-    
-
+    TimeLineComponent,
+    VideoComponent,
+    SafePipe,
   ],
   imports: [
     CommonModule,
@@ -132,6 +136,7 @@ export function getAuthServiceConfigs() {
     BrowserAnimationsModule,
     MaterialModule,
     MatIconModule,
+    YoutubePlayerModule,
     FormsModule,
     ReactiveFormsModule,
     NguCarouselModule,

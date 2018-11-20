@@ -59,12 +59,6 @@ export class LoginComponent implements OnInit {
   @Output() status = new EventEmitter<any>();
 
 
-
-
-
-
-
-
     constructor(
         private route: ActivatedRoute,
         private router: Router,
@@ -79,27 +73,7 @@ export class LoginComponent implements OnInit {
     ) { }
 
 
-     //Facebook Login Functions
-     open(){
-       alert('cilcked');
-       this.userService.createFb()
-       .subscribe(
-           data => {
 
-           if (data.type == 4) {
-                   if(data instanceof HttpResponse){
-
-                     if(data.body=="success")
-                     {
-                      console.log("return success 1");
-                     }
-                     else{
-                      console.log("return failure 1");
-                     }
-     }
-    }
-    });
-  }
 
      openPopup() {
 
@@ -165,7 +139,7 @@ export class LoginComponent implements OnInit {
                               socialname= (<HTMLInputElement>document.getElementById('name')).value;
                               socialemail=(<HTMLInputElement>document.getElementById('email')).value;
                      
-        
+                           //   this.router.navigateByUrl('/gifts');
         
                               // function call to userService
         
@@ -180,7 +154,7 @@ export class LoginComponent implements OnInit {
                                       if(data.body=="success")
                                       {
                                         console.log('result==='+data.body);    
-                                         
+                                       // this.router.navigateByUrl('/');
                                         // this.router.navigate(['/']);
                                          
                                       }
@@ -196,13 +170,15 @@ export class LoginComponent implements OnInit {
                               },
                               error => {
                                 console.log('error');    
+                                //this.router.navigate(['/']);
                                  // this.alertService.error(error);
                                 //  this.loading = false;
                               }
+                             
                         );
         
         
-                        this.router.navigate(['/']);
+                       // this.router.navigate(['/']);
 
                             }
                           }
@@ -236,7 +212,7 @@ export class LoginComponent implements OnInit {
                               {
                                 console.log('result==='+data.body);    
                                  
-                                // this.router.navigate(['/']);
+                               this.router.navigate(['/']);
                                  
                               }
                               else{
@@ -257,7 +233,7 @@ export class LoginComponent implements OnInit {
                 );
 
 
-                this.router.navigate(['/']);
+              this.router.navigate(['/']);
 
 
 
