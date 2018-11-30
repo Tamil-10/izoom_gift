@@ -58,7 +58,7 @@ const appRoutes: Routes = [
   { path : 'thankyou', component: ThankyouComponent},
   { path : 'my-orders', component : MyOrdersComponent},
   { path : 'video/:id', component: VideoComponent},
-  { path : 'video', component: VideoComponent}
+  { path : 'video', component: VideoComponent},
 
 
 

@@ -128,7 +128,8 @@ export function getAuthServiceConfigs() {
     MyOrdersComponent,
     TimeLineComponent,
     VideoComponent,
-    SafePipe,
+    SafePipe
+    
   ],
   imports: [
     CommonModule,

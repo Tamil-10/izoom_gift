@@ -162,6 +162,17 @@ export class ProductService {
          return this.http.request(req);
          
      }
+
+     whatsapp(): Observable<HttpEvent<{}>> {
+        // alert('order retrieve '+userId)
+         
+         const req = new HttpRequest('POST', '/api/user/whatsapp/', {
+             reportProgress: true,
+             responseType: 'text'
+         });
+         return this.http.request(req);
+         
+     }
   
    
 }

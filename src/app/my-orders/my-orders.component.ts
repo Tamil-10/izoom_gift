@@ -43,7 +43,7 @@ export class MyOrdersComponent implements OnInit {
   
   
   retrieveOrders() {
-   if(this.cookieValue = 'izoomstudios@gmail.com'){
+   if(this.cookieValue == 'izoomstudios@gmail.com'){
     console.log('admin');
     this.productService.retrieveAdminOrders().subscribe(data => {
       if (data instanceof HttpResponse ) {
@@ -91,5 +91,18 @@ export class MyOrdersComponent implements OnInit {
         }
       });
       
+    }
+    openPopup() {
+      
+      this.productService.whatsapp().subscribe(data => {
+        if (data instanceof HttpResponse ) {
+          console.log('sdf---'+data.body);
+          this.orderList = JSON.parse('' + data.body);
+          console.log('byId'+this.orderList);
+          
+        }
+      });
+    
+    
     }
   }
